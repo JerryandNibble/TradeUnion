@@ -143,6 +143,7 @@
     <Compile Include="Controllers\IntroUnionController.cs" />
     <Compile Include="Controllers\JoinUsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\UnionFunctionController.cs" />
     <Compile Include="Controllers\UnionInforController.cs" />
     <Compile Include="Controllers\UnionMembersController.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Baoxian.cs" />
     <Compile Include="Models\Shengri.cs" />
     <Compile Include="Models\TBaoXian.cs" />
@@ -405,7 +407,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\HomeIndex.cshtml" />
-    <Content Include="Views\Login\LoginIndex.cshtml" />
+    <Content Include="Views\SignUp\SignUpIndex.cshtml" />
     <Content Include="Views\UnionFunction\UnionFunctionIndex.cshtml" />
     <Content Include="Views\IntroUnion\IntroUnionIndex.cshtml" />
     <Content Include="Views\UnionInfor\UnionInforIndex.cshtml" />
@@ -433,6 +435,8 @@
     <Content Include="Views\EmployeeFamily\AddChildStatusIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\ScanChildIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\ScanChildStatusIndex.cshtml" />
+    <Content Include="Views\SignUp.cshtml" />
+    <Content Include="Views\Login\LoginIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Default\" />

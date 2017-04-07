@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <title>工会日常工作管理系统</title>
+    <title>工会日常工作管理系统-用户注册</title>
 </head>
 <body >
     
@@ -16,7 +16,7 @@
     
     
 
-    <form action="/Login/LoginAction" method="post">@* Login:控制器名字 LoginAction:控制器方法 *@
+    <form action="/SignUp/AddNewAccountAction" method="post">@* SignUp:控制器名字 SignUpAction:控制器方法 *@
         <div class="container">
             <div class="jumbotron">
                 <h1>Register with us and rent online</h1>
@@ -29,7 +29,6 @@
                             <li><span class="glyphicon glyphicon-ok"></span> Save your favorites</li>
                             <li><span class="glyphicon glyphicon-ok"></span> Fast checkout</li>
                             <li><span class="glyphicon glyphicon-ok"></span> Get a gift <small>(only new customers)</small></li>
-                            <li>@Html.ActionLink("还没有注册？快来创建一个！", "SignUpIndex", "SignUp")</li>
                         </ul>
                     </div>
                     <div class="col-md-6">
@@ -47,6 +46,11 @@
                                 <input name="PassWord" type="password" class="form-control" placeholder="填写密码">
                             </div>
 
+                            <div class="form-group">
+                                <label for="confirmPassword">确认密码</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                            </div>
+
                             <button type="submit" class="btn btn-primary btn-lg">登录</button>
                             <button type="reset" class="btn btn-warning  btn-lg">重置</button>
 
@@ -59,6 +63,8 @@
 
     </form>
 
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
 
 
 
