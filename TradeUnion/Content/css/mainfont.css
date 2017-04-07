@@ -1,0 +1,8 @@
+﻿@font-face {
+  font-family: 'MyNewFont';                   /*字体名称*/
+  src: url('fonts/微软雅黑.ttf');       /*字体源文件*/
+}
+div{
+  font-family: 'MyNewFont';
+  font-size:15px;
+}

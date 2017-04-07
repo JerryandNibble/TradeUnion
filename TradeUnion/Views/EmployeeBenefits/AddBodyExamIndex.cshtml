@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "AddBodyExamIndex";
+    Layout = "~/Views/Shared/_UnionLeft.cshtml";
+}
+
+<div class="col-md-11 well admin-content">
+
+    <form class="form-horizontal" action="/EmployeeBenefits/AddEyeBeft" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend class="text-center">添加体检信息</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">编号</label>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Num</span>
+                        <input name="BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">姓名</label>
+                <div class="col-md-4">
+                    <input name="XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
+                    <span class="help-block">请您如实填写</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">时间</label>
+                <div class="col-md-4">
+                    <input name="ShiJian" type="text" placeholder="填写体检时间" class="form-control input-md" required>
+                    <span class="help-block">格式:YYYY-MM-DD</span>
+                </div>
+            </div>
+            
+            
+
+                @*<div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+            </script>*@  
+
+           
+
+            <!-- Select Basic -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">医院</label>
+                <div class="col-md-4">
+                    <select name="YiYuan" class="form-control">
+                        <option value="协和医院">协和医院</option>
+                        <option value="蓝天医院">蓝天医院</option>
+                        <option value="人民医院">人民医院</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">体检结果</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" name="JieGuo"></textarea>
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">选择</label>
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-info">确定</button>
+                    <button type="reset" class="btn btn-warning">重置</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+</div>
+

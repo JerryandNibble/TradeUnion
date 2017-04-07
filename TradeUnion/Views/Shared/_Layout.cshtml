@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>工会日常工作管理系统</title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="Stylesheet" />
+    <link href="~/Content/css/jquery-ui.css" rel="Stylesheet" />
+    <link href="~/Content/css/mainfont.css" rel="Stylesheet" />
+    <link href="~/Content/css/vertical menu.css" rel="Stylesheet" />
+    <link href="~/Content/css/footer.css" rel="Stylesheet" />
+    <link href="~/Content/css/tab carousel.css" rel="Stylesheet" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+              <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("首页资讯", "HomeIndex", "Home")</li>
+                        <li>@Html.ActionLink("工会职能", "UnionFunctionIndex", "UnionFunction")</li>
+                        <li><a href="#">工会信息</a></li>
+                        <li><a href="#">工会成员</a></li>
+                        <li><a href="#">教职工福利</a></li>
+                        <li><a href="#">教职工家属</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+              </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
