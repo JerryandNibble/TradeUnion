@@ -172,7 +172,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\admin.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\css.css" />
@@ -185,7 +184,6 @@
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\grid.css" />
     <Content Include="Content\css\jquery-ui.css" />
-    <Content Include="Content\css\login.css" />
     <Content Include="Content\css\mainfont.css" />
     <Content Include="Content\css\navileft.css" />
     <Content Include="Content\css\Nav_left.css" />
@@ -271,7 +269,7 @@
     <Content Include="images\li.gif" />
     <Content Include="images\line.gif" />
     <Content Include="images\lineS.jpg" />
-    <Content Include="images\login.css" />
+    <Content Include="Content\css\login.css" />
     <Content Include="images\Login.GIF" />
     <Content Include="images\login.jpg" />
     <Content Include="images\LoginBg.gif" />

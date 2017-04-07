@@ -5,14 +5,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/images/login.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/css/login.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>工会日常工作管理系统</title>
 </head>
-<body style="background-color:#098ed0;font-size:14px;color:#098ED0;margin:0;">
+<body >@*style="font-size:14px;margin:0;"*@
    
 
-    <form action="/Login/LoginAction" method="post">
+    @*<form action="/Login/LoginAction" method="post">
         <table style="WIDTH:100%; HEIGHT:100%;margin-top:6em;">
             <tr>
                 <td></td>
@@ -57,7 +57,7 @@
 
 
 
-    </form>
+    </form>*@
     
     
 
@@ -112,5 +112,76 @@
                 </form>
             
     </table>*@
+
+    <form action="/Login/LoginAction" method="post">@* Login:控制器名字 LoginAction:控制器方法 *@
+        <div class="container">
+
+            <div class="jumbotron">
+                <h1>Register with us and rent online</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>Become a seller</div>
+                        <ul class="list-unstyled" style="line-height: 2">
+                            <li><span class="glyphicon glyphicon-ok"></span> See all your orders</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Fast re-order</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Save your favorites</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Fast checkout</li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Get a gift <small>(only new customers)</small></li>
+                            <li><a href="#"><u>Read more</u></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <form>
+                            <div class="form-group">
+                                <label>登录名</label>
+                                <input name="UserName" type="text" class="form-control" placeholder="输入您的登录名">
+                            </div>
+                            <div class="form-group">
+                                <label>密码</label>
+                                <input name="PassWord" type="password" class="form-control" placeholder="填写密码">
+                            </div>
+
+                            @*<div class="form-group">
+                                    <label for="confirmPassword">Password*</label>
+                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                                </div>*@
+
+                            <button type="submit" class="btn btn-primary btn-lg">登录</button>
+                            <button type="reset" class="btn btn-warning  btn-lg">重置</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
