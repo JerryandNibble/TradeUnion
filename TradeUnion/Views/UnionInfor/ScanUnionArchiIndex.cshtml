@@ -4,6 +4,44 @@
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
 
+
+
+@using Models;
+@model  Admin
+
+
+
+
+
+
+@*@{
+    var p = (JiaGou)ViewData["person"];
+}
+<h1>@p.ID</h1>
+<h2>@p.MingCheng</h2>
+<h3>@p.FabuRen</h3>
+<h3>@p.JieShao</h3>
+<h3>@p.ShiJian</h3>*@
+
+
+
+
+
+
+
+
+
+
+@*<ol class="breadcrumb col-md-11">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>*@
+
+
+
+
+
 <div class="col-md-11 well admin-content">
     <fieldset>
         <legend class="text-center">查看工会架构信息</legend>
@@ -41,7 +79,7 @@
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Blogs</td>
+                        <td>The message is: @ViewData["Message"]</td>
                         <td>Parent Blogs</td>
                         <td>Family</td>
                         <td class="text-center">
@@ -55,3 +93,17 @@
     </fieldset>
 
 </div>
+
+<h2>
+
+    
+        <label>编号：</label> @Model.ID
+        <label>姓名：</label> @Model.UserName
+        <label>年龄：</label> @Model.PassWord
+
+    
+
+
+</h2 >
+
+

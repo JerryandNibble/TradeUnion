@@ -112,6 +112,58 @@ public class SQLHelper
 
 
 
+
+
+
+
+
+    /// <summary>
+    /// 执行查询，返回一个数据集
+    /// </summary>
+    /// <param name="sql"></param>
+    /// <param name="pars"></param>
+    /// <returns></returns>
+    public static DataSet ExcueReturnDataset(string sql, IDataParameter[] pars)
+    {
+        SqlConnection con = new SqlConnection(GetConnStr());
+        DataSet set = new DataSet();
+        SqlCommand com = new SqlCommand(sql, con);
+        if (pars != null && pars.Length > 0)
+        {
+            foreach (SqlParameter pp in pars)//把参数集全部加进去
+                com.Parameters.Add(pp);
+        }
+
+        SqlDataAdapter adpter = new SqlDataAdapter(com);
+
+        try
+        {
+            set.Clear();
+            adpter.Fill(set);
+            return set;
+        }
+        catch (Exception ex) { return null; }
+        finally
+        {
+            com.Parameters.Clear();
+            com.Dispose();
+            con.Close();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     /// <summary>
     /// 由select语句（sql）查询得到SQLDataReader类型记录集（为了方便对每一行进行处理）
     /// </summary>
@@ -144,8 +196,6 @@ public class SQLHelper
     /// 说明：GetDataSet数据集，返回数据源的数据集
     ///	返回值：数据集DataSet
     ///	参数：sQueryString SQL字符串，TableName 数据表名称
-    /// 创建日期：2010-8
-    /// 创建人：
     /// </summary>
     public static DataSet GetDataSet(string sQueryString, string TableName)
     {
@@ -181,20 +231,6 @@ public class SQLHelper
                 ddlName.Items.Add(li);
             }
         }
-
-        /*
-        //如下的代码也可以；确点无法添加空项目
-        ddlName.Items.Clear();
-        DataSet ds = GetDataSet(sql);
-
-        if (ds != null && ds.Tables[0].Rows.Count >= 1)
-        {
-            ddlName.DataSource = ds.Tables[0].DefaultView ;
-            ddlName.DataTextField = DisplayText;
-            ddlName.DataValueField = ValueField;
-            ddlName.DataBind();
-       }
-        */
     }
 
 

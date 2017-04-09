@@ -7,6 +7,11 @@ namespace Models
 {
     public class Admin
     {
+       public  Admin()
+        {
+            
+        }
+
         public int ID
         {
             get; set;

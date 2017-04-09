@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -100,39 +101,6 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddJiaGousql, para);
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
-        /// <summary>
-        /// 查找表中架构的数据并输出到页面
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        //public IEnumerable<JiaGou> ScanJiaGouMSG()
-        //{
-
-           
-
-
-        //    //return base.Query<JiaGou>(sqlh, dp).SingleOrDefault();
-
-
-        //    //SQLHelper sqlh = new SQLHelper();
-        //    //model.ShiJian = DateTime.Now;
-        //    //const string AddJiaGousql = @"INSERT INTO dbo.TB_JiaGou
-        //    //                           ( MingCheng, FabuRen,JieShao,ShiJian) 
-        //    //                            VALUES  ( @MingCheng, 
-        //    //                                      @FabuRen,
-        //    //                             @JieShao,
-        //    //                             @ShiJian
-        //    //) ";
-        //    //SqlParameter[] para = new SqlParameter[]
-        //    //{
-        //    //  new SqlParameter("MingCheng",model.MingCheng),
-        //    //  new SqlParameter("FabuRen", model.FabuRen),
-        //    //  new SqlParameter("JieShao", model.JieShao),
-        //    //  new SqlParameter("ShiJian", model.ShiJian)
-        //    // };
-        //    //sqlh.ExecData(AddJiaGousql, para);
-        //    //return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
-        //}
         #endregion
 
         #region ---法规信息增加的方法
@@ -167,7 +135,7 @@ namespace TradeUnion.Controllers
         
         #region ---工会公告信息的方法
         /// <summary>
-        /// 添加工会架构信息的方法
+        /// 添加工会公告信息的方法
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -194,7 +162,62 @@ namespace TradeUnion.Controllers
         }
 
         #endregion
-        
+
+        //#region ---浏览工会架构信息
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        //public ActionResult ScanJiaGouMSG(JiaGou model)
+        //{
+        //    DataSet set = new DataSet();
+        //    SQLHelper sqlCheck = new SQLHelper();
+        //    model.ShiJian = DateTime.Now;
+        //    const string ScanJiaGousql = @"select *
+        //                                   from TB_JiaGou
+        //    ";
+        //    set = SQLHelper.ExcueReturnDataset(ScanJiaGousql, null);
+
+        //    ViewBag.Message = "fsfsf";
+        //    ViewData["testData"] = "daddddsds";
+        //    return RedirectToAction("ScanUnionArchiIndex", "UnionInfor"); 
+        //}
+
+
+
+
+        public ActionResult ScanJiaGouMSG(JiaGou model)
+        {
+            //var p = new JiaGou()
+            //const string ScanJiaGousql = @"select *
+            //                               from TB_JiaGou
+            //";
+            //{
+            //  ID = 1,
+            //  MingCheng = "标题",
+            //  FabuRen = "小王",
+            //  JieShao = "哈哈哈",
+            // // ShiJian = '2017-4-9'
+            //};
+            //ViewBag._JiaGou = p;
+            //return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+
+            var p = new Admin()
+            {
+                ID = 1,
+                UserName = "饮料",
+                PassWord = "fsfs"
+            };
+           
+            return View(p);
+        }
+
+
+
+
+
+
+
 
 
     }
