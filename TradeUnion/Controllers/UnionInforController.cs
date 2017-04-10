@@ -163,56 +163,13 @@ namespace TradeUnion.Controllers
 
         #endregion
 
-        //#region ---浏览工会架构信息
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        //public ActionResult ScanJiaGouMSG(JiaGou model)
-        //{
-        //    DataSet set = new DataSet();
-        //    SQLHelper sqlCheck = new SQLHelper();
-        //    model.ShiJian = DateTime.Now;
-        //    const string ScanJiaGousql = @"select *
-        //                                   from TB_JiaGou
-        //    ";
-        //    set = SQLHelper.ExcueReturnDataset(ScanJiaGousql, null);
-
-        //    ViewBag.Message = "fsfsf";
-        //    ViewData["testData"] = "daddddsds";
-        //    return RedirectToAction("ScanUnionArchiIndex", "UnionInfor"); 
-        //}
-
-
-
 
         public ActionResult ScanJiaGouMSG(JiaGou model)
         {
-            //var p = new JiaGou()
-            //const string ScanJiaGousql = @"select *
-            //                               from TB_JiaGou
-            //";
-            //{
-            //  ID = 1,
-            //  MingCheng = "标题",
-            //  FabuRen = "小王",
-            //  JieShao = "哈哈哈",
-            // // ShiJian = '2017-4-9'
-            //};
-            //ViewBag._JiaGou = p;
-            //return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+            List < JiaGou > = new JiaGou().ExcueReturnDataset();
 
-            var p = new Admin()
-            {
-                ID = 1,
-                UserName = "饮料",
-                PassWord = "fsfs"
-            };
-           
-            return View(p);
+            return View();
         }
-
-
 
 
 
