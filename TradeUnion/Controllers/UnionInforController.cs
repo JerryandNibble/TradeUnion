@@ -9,9 +9,8 @@ namespace TradeUnion.Controllers
 
     public class UnionInforController : Controller
     {
-        #region --返回UnionInforIndex视图
         /// <summary>
-        /// 
+        /// 返回UnionInforIndex视图
         /// </summary>
         /// <returns></returns>
         // GET: UnionInfor
@@ -19,33 +18,27 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
-        #endregion
 
-        #region ---返回AddUnionArchiIndex视图
         /// <summary>
-        /// 
+        /// 返回AddUnionArchiIndex视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionArchiIndex()
         {
             return View();
         }
-        #endregion
 
-        #region ---返回AddUnionPolicyIndex视图
         /// <summary>
-        /// 
+        /// 返回AddUnionPolicyIndex视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionPolicyIndex()
         {
             return View();
         }
-        #endregion
 
-        #region ---返回AddUnionAnnounIndex视图
         /// <summary>
-        /// 
+        /// 返回AddUnionAnnounIndex视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionAnnounIndex()
@@ -53,10 +46,9 @@ namespace TradeUnion.Controllers
             //返回视图，即点击左侧链接时，先返回一个AddUnionAnnounIndex页面，具体提交该页面表单数据的方法在本控制器下面写出来。
             return View();
         }
-        #endregion
 
         /// <summary>
-        /// 
+        /// 浏览工会架构信息的同时返回视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionArchiIndex()
@@ -67,19 +59,25 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 浏览工会政策法规信息的同时返回视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionPolicyIndex()
         {
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_FaGui();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
-        /// 
+        /// 浏览工会政策法规信息的同时返回视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionAnnounIndex()
         {
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_GongGao();
+            ViewBag.List = queryResult;
             return View();
         }
         
