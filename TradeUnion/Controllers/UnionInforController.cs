@@ -1,19 +1,15 @@
-﻿using Models;
+﻿using SQLSeverDal.UnionInfor;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using TradeUnion.Models;
+using TU.Model.Models;
 
 namespace TradeUnion.Controllers
 {
+
     public class UnionInforController : Controller
     {
-        #region --返回视图
+        #region --返回UnionInforIndex视图
         /// <summary>
         /// 
         /// </summary>
@@ -23,6 +19,9 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+        #endregion
+
+        #region ---返回AddUnionArchiIndex视图
         /// <summary>
         /// 
         /// </summary>
@@ -31,6 +30,9 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+        #endregion
+
+        #region ---返回AddUnionPolicyIndex视图
         /// <summary>
         /// 
         /// </summary>
@@ -39,21 +41,29 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+        #endregion
+
+        #region ---返回AddUnionAnnounIndex视图
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionAnnounIndex()
         {
+            //返回视图，即点击左侧链接时，先返回一个AddUnionAnnounIndex页面，具体提交该页面表单数据的方法在本控制器下面写出来。
             return View();
         }
+        #endregion
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionArchiIndex()
         {
-           // ScanJiaGouMSG();
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_JiaGou();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
@@ -72,7 +82,6 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
-        #endregion
         
         #region ---工会架构信息的方法
         /// <summary>
@@ -129,6 +138,7 @@ namespace TradeUnion.Controllers
              };
             sqlh.ExecData(AddFaGuisql, para);
             return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
+            
         }
 
         #endregion
@@ -162,20 +172,5 @@ namespace TradeUnion.Controllers
         }
 
         #endregion
-
-
-        public ActionResult ScanJiaGouMSG(JiaGou model)
-        {
-            List < JiaGou > = new JiaGou().ExcueReturnDataset();
-
-            return View();
-        }
-
-
-
-
-
-
-
     }
 }

@@ -1,8 +1,6 @@
-﻿using Models;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data;
 using System.Web.Mvc;
-
+using TU.Model.Models;
 
 namespace TradeUnion.Controllers
 {

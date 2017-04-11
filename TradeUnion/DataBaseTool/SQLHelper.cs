@@ -131,7 +131,7 @@ public class SQLHelper
         if (pars != null && pars.Length > 0)
         {
             foreach (SqlParameter pp in pars)//把参数集全部加进去
-                com.Parameters.Add(pp);
+            com.Parameters.Add(pp);
         }
 
         SqlDataAdapter adpter = new SqlDataAdapter(com);

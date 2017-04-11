@@ -155,20 +155,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Baoxian.cs" />
-    <Compile Include="Models\Shengri.cs" />
-    <Compile Include="Models\TBaoXian.cs" />
-    <Compile Include="Models\FaGui.cs" />
-    <Compile Include="Models\FTeShu.cs" />
-    <Compile Include="Models\GongGao.cs" />
-    <Compile Include="Models\GongHui.cs" />
-    <Compile Include="Models\JiaGou.cs" />
-    <Compile Include="Models\KeHu.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\Teshu.cs" />
-    <Compile Include="Models\TiJian.cs" />
-    <Compile Include="Models\ZiNV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -394,7 +380,9 @@
     <Content Include="Scripts\tab carousel.js" />
     <Content Include="Scripts\vertical menu.js" />
     <Content Include="Views\Shared\_UnionLeft.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -438,9 +426,7 @@
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\LoginIndex.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Default\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -455,6 +441,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dapper\Dapper.csproj">
+      <Project>{6d8c0932-f043-4a4f-b781-f7a05e25ac88}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLSeverDal\SQLSeverDal.csproj">
+      <Project>{8c623c22-9470-4a26-bb8e-267fcee96bbb}</Project>
+      <Name>SQLSeverDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TU.Model\TU.Model.csproj">
+      <Project>{90ba62c7-512b-46db-8c1c-34ce185956c3}</Project>
+      <Name>TU.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TradeUnion.Models;
+using TU.Model.Models;
 
 namespace TradeUnion.Controllers
 {
@@ -53,8 +53,7 @@ namespace TradeUnion.Controllers
             return View();
         }
         #endregion
-
-
+        
         #region --子女信息
         public ActionResult AddCil(ZiNV model)
         {
