@@ -20,6 +20,15 @@ namespace SQLSeverDal.EmployeeFamily
             return Query<ZiNV>(Query_factorySql).ToList();
         }
 
-        //public IList<>
+        public IList<FTeShu> Query_FTeShu()
+        {
+            const string Query_factorySql = @"select id,
+                                                     bianhao,
+                                                     xingming,
+                                                     teshu
+                                              from tb_fteshu
+                                           ";
+            return Query<FTeShu>(Query_factorySql).ToList();
+        }
     }
 }

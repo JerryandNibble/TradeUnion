@@ -27,15 +27,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3" style="height:500px;width:265px;">
-            <div class="LIsy_ouy">
-                <ul class="nav nav-pills nav-stacked admin-menu ">
 
-                    @*方法:<li><i class="fa fa-home fa-2x fa-fw"></i><a href="/控制器名/方法名"></a></li>*@
-                  
-                    <li><nobr><a><i class="fa fa-home fa-2x fa-fw"></i>@Html.ActionLink("工会简介", "IntroUnionIndex", "IntroUnion")</a></nobr></li>
+                <ul class="nav nav-pills nav-stacked admin-menu ">
+                    <li class="active"><nobr><a><i class="fa fa-home fa-2x fa-fw"></i>@Html.ActionLink("工会简介", "IntroUnionIndex", "IntroUnion")</a></nobr></li>
+
+
 
                     <li><nobr><a><i class="fa fa-tasks fa-2x fa-fw"></i>@Html.ActionLink("工会信息", "UnionInforIndex", "UnionInfor")</a></nobr></li>
-                    <li style="padding-left:35px;"><nobr><a><i class="fa fa-institution fa-fw"></i>@Html.ActionLink("添加工会架构信息", "AddUnionArchiIndex", "UnionInfor")</a></nobr></li>
+                    
+                    <li style="padding-left:35px;"><nobr><a><i class="fa fa-institution fa-fw"></i><a href="/UnionInfor/AddUnionArchiIndex">添加工会架构信息</a></a></nobr></li>
+
                     <li style="padding-left:35px;"><nobr><a><i class="fa fa-balance-scale fa-fw"></i>@Html.ActionLink("发布工会政策法规", "AddUnionPolicyIndex", "UnionInfor")</a></nobr></li>
                     <li style="padding-left:35px;"><nobr><a><i class="fa fa-info fa-fw"></i>@Html.ActionLink("发布最新公告", "AddUnionAnnounIndex", "UnionInfor")</a></nobr></li>
                     <li style="padding-left:35px;"><nobr><a><i class="fa fa-eye fa-fw"></i>@Html.ActionLink("查看架构信息", "ScanUnionArchiIndex", "UnionInfor")</a></nobr></li>
@@ -65,7 +66,7 @@
                     <li><nobr><a><i class="fa fa-paperclip fa-2x fa-fw"></i>@Html.ActionLink("加入我们", "JoinUsIndex", "JoinUs")</a></nobr></li>
 
                 </ul>
-            </div>
+
         </div>
     </div>
 </div>

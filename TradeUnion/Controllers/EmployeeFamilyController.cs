@@ -49,6 +49,9 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanChildStatusIndex()
         {
+            EmployeeFamilyDal ScanEmployeeFamilyTeShu = new EmployeeFamilyDal();
+            var queryResult = ScanEmployeeFamilyTeShu.Query_FTeShu();
+            ViewBag.List = queryResult;
             return View();
         }
         
