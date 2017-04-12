@@ -185,9 +185,9 @@
     <Content Include="font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\+.gif" />
@@ -283,7 +283,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
     <Content Include="font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
@@ -351,13 +350,13 @@
     <Content Include="Content\css\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Content\css\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="fonts\微软雅黑.ttf" />
+    <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Calendar.js" />
-    <Content Include="Scripts\CalendarCn.htm" />
     <Content Include="Scripts\carousel extended.js" />
     <Content Include="Scripts\carousel.js" />
-    <Content Include="Scripts\color.js" />
-    <Content Include="Scripts\date.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -427,15 +426,6 @@
     <Content Include="Views\Login\LoginIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
