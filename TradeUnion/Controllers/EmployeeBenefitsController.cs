@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using SQLSeverDal.EmployeeBenefits;
+using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
 
@@ -54,6 +55,9 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanBodyExamIndex()
         {
+            EmployeeBenefitsDal ScanBodyExam = new EmployeeBenefitsDal();
+            var queryResult = ScanBodyExam.Query_TiJian();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
@@ -62,6 +66,9 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanBirthdayIndex()
         {
+            EmployeeBenefitsDal ScanBirthday = new EmployeeBenefitsDal();
+            var queryResult = ScanBirthday.Query_Shengri();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
@@ -70,6 +77,9 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanInsuranceIndex()
         {
+            EmployeeBenefitsDal ScanInsurance = new EmployeeBenefitsDal();
+            var queryResult = ScanInsurance.Query_BaoXian();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
@@ -78,6 +88,9 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanSpecialIndex()
         {
+            EmployeeBenefitsDal ScanSpecial = new EmployeeBenefitsDal();
+            var queryResult = ScanSpecial.Query_TeShu();
+            ViewBag.List = queryResult;
             return View();
         }
         #endregion

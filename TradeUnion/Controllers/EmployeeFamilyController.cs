@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SQLSeverDal.EmployeeFamily;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TU.Model.Models;
 
@@ -10,9 +7,8 @@ namespace TradeUnion.Controllers
 {
     public class EmployeeFamilyController : Controller
     {
-        #region   --返回视图
         /// <summary>
-        /// 
+        /// 返回教职工家属信息视图
         /// </summary>
         /// <returns></returns>
         // GET: EmployeeFamily
@@ -21,7 +17,7 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 返回添加子女信息视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddChildIndex()
@@ -29,7 +25,7 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 返回添加子女特殊情况视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddChildStatusIndex()
@@ -37,24 +33,31 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 返回浏览子女信息视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanChildIndex()
         {
+            EmployeeFamilyDal ScanEmployeeFamily = new EmployeeFamilyDal();
+            var queryResult = ScanEmployeeFamily.Query_ZiNV();
+            ViewBag.List = queryResult;
             return View();
         }
         /// <summary>
-        /// 
+        /// 返回浏览子女特殊情况视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanChildStatusIndex()
         {
             return View();
         }
-        #endregion
         
-        #region --子女信息
+
+        /// <summary>
+        /// 添加子女信息的方法
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ActionResult AddCil(ZiNV model)
         {
             SQLHelper sqlh = new SQLHelper();
@@ -81,9 +84,13 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddCilsql, para);
             return RedirectToAction("ScanChildIndex", "EmployeeFamily");
         }
-        #endregion
 
-        #region --子女特殊情况
+
+        /// <summary>
+        /// 添加子女特殊情况
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ActionResult AddZiNvStatus(FTeShu model)
         {
             SQLHelper sqlh = new SQLHelper();
@@ -102,6 +109,5 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddZiNvStatussql, para);
             return RedirectToAction("ScanChildStatusIndex", "EmployeeFamily");
         }
-        #endregion
     }
 }

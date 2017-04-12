@@ -80,8 +80,6 @@ namespace TradeUnion.Controllers
             ViewBag.List = queryResult;
             return View();
         }
-        
-        #region ---工会架构信息的方法
         /// <summary>
         /// 添加工会架构信息的方法
         /// </summary>
@@ -108,9 +106,7 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddJiaGousql, para);
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
-        #endregion
 
-        #region ---法规信息增加的方法
         /// <summary>
         /// 添加工会架构信息的方法
         /// </summary>
@@ -138,10 +134,7 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
             
         }
-
-        #endregion
         
-        #region ---工会公告信息的方法
         /// <summary>
         /// 添加工会公告信息的方法
         /// </summary>
@@ -168,7 +161,5 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddGongGaosql, para);
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
-
-        #endregion
     }
 }

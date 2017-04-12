@@ -4,5 +4,40 @@
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
 
-<h2>ScanUnionMembersIndex</h2>
 
+
+<div class="col-md-11 well admin-content">
+    <fieldset>
+        <legend class="text-center">工会成员信息</legend>
+        <div class="container">
+            <div class="row col-md-6 custyle">
+                <table class="table table-striped custab">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>生日</th>
+                            <th>地址</th>
+                            <th>联系方式</th>
+                            <th class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    @{
+                        foreach (var item in ViewBag.List)
+                        {
+                            <tr>
+                                <td>@item.XingMing</td>
+                                <td>@item.ShengRi</td>
+                                <td>@item.Address</td>
+                                <td>@item.LianXIFangShi</td>
+                                <td class="text-center">
+                                    <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
+                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 删除</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </fieldset>
+</div>

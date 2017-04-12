@@ -45,8 +45,11 @@
     <Compile Include="Common\CommonSqlStrings.cs" />
     <Compile Include="Common\DbFactory.cs" />
     <Compile Include="Common\SqlStringExtensions.cs" />
+    <Compile Include="EmployeeBenefits\EmployeeBenefitsDal.cs" />
+    <Compile Include="EmployeeFamily\EmployeeFamilyDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnionInfor\UnionInforDal.cs" />
+    <Compile Include="UnionMembers\UnionMembersDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dapper\Dapper.csproj">

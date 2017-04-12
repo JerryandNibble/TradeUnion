@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using SQLSeverDal.UnionMembers;
+using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
 
@@ -6,7 +7,6 @@ namespace TradeUnion.Controllers
 {
     public class UnionMembersController : Controller
     {
-        #region --返回视图
         /// <summary>
         /// 
         /// </summary>
@@ -30,11 +30,11 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult ScanUnionMembersIndex()
         {
+            UnionMembersDal ScanUnionMembers = new UnionMembersDal();
+            var queryResult = ScanUnionMembers.Query_KeHu();
+            ViewBag.List = queryResult;
             return View();
         }
-        #endregion
-
-        #region --工会成员信息
         /// <summary>
         /// 添加工会成员信息
         /// </summary>
@@ -69,10 +69,5 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddMbssql, para);
             return RedirectToAction("ScanUnionMembersIndex", "UnionMembers");
         }
-
-
-
-        #endregion
-
     }
 }
