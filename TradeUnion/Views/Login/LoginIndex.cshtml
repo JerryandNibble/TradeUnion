@@ -9,7 +9,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title>工会日常工作管理系统</title>
 </head>
-<body >
+<body>
     
     
     
@@ -19,7 +19,7 @@
     <form action="/Login/LoginAction" method="post">@* Login:控制器名字 LoginAction:控制器方法 *@
         <div class="container">
             <div class="jumbotron">
-                <h1>Register with us and rent online</h1>
+                <h1>Login with us and rent online</h1>
                 <div class="row">
                     <div class="col-md-6">
                         <div>Become a seller</div>
@@ -28,7 +28,7 @@
                             <li><span class="glyphicon glyphicon-ok"></span> Fast re-order</li>
                             <li><span class="glyphicon glyphicon-ok"></span> Save your favorites</li>
                             <li><span class="glyphicon glyphicon-ok"></span> Fast checkout</li>
-                            <li><span class="glyphicon glyphicon-ok"></span> Get a gift <small>(only new customers)</small></li>
+                            <li><span class="glyphicon glyphicon-ok"></span> Get a gift</li>
                             <li>@Html.ActionLink("还没有注册？快来创建一个！", "SignUpIndex", "SignUp")</li>
                         </ul>
                     </div>
@@ -37,7 +37,6 @@
 
                             <div class="form-group">
                                 <label>登录名</label>
-                                @*<span class="input-group-addon"><i class="fa fa-user fa " aria-hidden="true"></i></span>*@
                                 <input name="UserName" type="text" class="form-control" placeholder="输入您的登录名">
                               </div>
              

@@ -188,6 +188,7 @@
     <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="font-awesome-4.7.0\HELP-US-OUT.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\+.gif" />
@@ -197,6 +198,7 @@
     <Content Include="images\03.gif" />
     <Content Include="images\04.gif" />
     <Content Include="images\act_btn.gif" />
+    <Content Include="images\aeft_supervisor.png" />
     <Content Include="images\bar_1.gif" />
     <Content Include="images\bar_2.gif" />
     <Content Include="images\bar_3.gif" />
@@ -354,6 +356,10 @@
     <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="font-awesome-4.7.0\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\carousel extended.js" />
     <Content Include="Scripts\carousel.js" />
