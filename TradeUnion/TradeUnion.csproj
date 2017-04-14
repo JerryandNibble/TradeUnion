@@ -171,6 +171,7 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\footer.css" />
     <Content Include="Content\css\grid.css" />
+    <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\mainfont.css" />
     <Content Include="Content\css\navileft.css" />
@@ -363,6 +364,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\carousel extended.js" />
     <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
