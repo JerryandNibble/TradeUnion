@@ -432,6 +432,7 @@
     <Content Include="Views\EmployeeFamily\ScanChildStatusIndex.cshtml" />
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\LoginIndex.cshtml" />
+    <Content Include="Views\UnionInfor\EditUnionArchiIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

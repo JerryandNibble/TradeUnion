@@ -6,9 +6,8 @@ namespace TradeUnion.Controllers
 {
     public class LoginController : Controller
     {
-        #region  ---返回该控制器的视图
         /// <summary>
-        /// 
+        /// 返回该控制器的视图
         /// </summary>
         /// <returns></returns>
         // GET: Login
@@ -16,11 +15,9 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
-        #endregion
 
-        #region  ---账号密码检查
         /// <summary>
-        /// 
+        /// 账号密码检查方法
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -40,10 +37,8 @@ namespace TradeUnion.Controllers
             }
             else
             {
-                return Redirect("LoginIndex");//重定向到本控制器中的LoginIndex方法
+               return Redirect("LoginIndex");//重定向到本控制器中的LoginIndex方法
             }
         }
-        #endregion
-
     }
 }

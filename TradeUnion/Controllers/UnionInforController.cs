@@ -87,11 +87,12 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult AddJiaGouMSG(JiaGou model)
         {
+       
             SQLHelper sqlh = new SQLHelper();
             model.ShiJian = DateTime.Now;
             const string AddJiaGousql = @"INSERT INTO dbo.TB_JiaGou
-                                       ( MingCheng, FabuRen,JieShao,ShiJian) 
-                                        VALUES  ( @MingCheng, 
+                                       ( MingCheng, FabuRen,JieShao,ShiJian)
+                                        VALUES  ( @MingCheng,
                                                   @FabuRen,
 			                                      @JieShao,
 			                                      @ShiJian
@@ -104,9 +105,9 @@ namespace TradeUnion.Controllers
               new SqlParameter("ShiJian", model.ShiJian)
              };
             sqlh.ExecData(AddJiaGousql, para);
+
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
-
         /// <summary>
         /// 添加工会架构信息的方法
         /// </summary>
@@ -160,6 +161,21 @@ namespace TradeUnion.Controllers
              };
             sqlh.ExecData(AddGongGaosql, para);
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
+        }
+
+        /// <summary>
+        /// 删除工会架构信息的方法
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DelJiaGouMSG(JiaGou model)
+        {
+            SQLHelper sqlh = new SQLHelper();
+            
+            //const string AddJiaGousql = @"delete 
+            //                              from TB_JiaGou
+            //                              where MingCheng='211'
+
+            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
     }
 }
