@@ -20,9 +20,5 @@ namespace TU.Model.Models
         {
             get; set;
         }
-        public string ShiJian
-        {
-            get; set;
-        }
     }
 }

@@ -31,18 +31,16 @@ public class SQLHelper
         return ConfigurationManager.AppSettings["connstr"];
     }
 
-    #region--连接SqlConnection,执行SQL 功能:增加、删除、更新--  
+    #region  --连接SqlConnection,执行SQL 功能:增加、删除、更新
     public void ExecData(string sqlstr, SqlParameter[] para)
     {
         SqlConnection sqlcon = new SqlConnection(GetConnStr());
         sqlcon.Open();
         SqlCommand sqlcom = new SqlCommand(sqlstr, sqlcon);
-
         foreach (var item in para)
         {
             sqlcom.Parameters.Add(item);
         }
-
         sqlcom.ExecuteNonQuery();
         sqlcom.Dispose();
         sqlcon.Close();

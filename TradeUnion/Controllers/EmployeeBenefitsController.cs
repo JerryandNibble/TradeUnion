@@ -149,18 +149,16 @@ namespace TradeUnion.Controllers
         {
             SQLHelper sqlh = new SQLHelper();
             const string AddEyeActivitysql = @"INSERT INTO dbo.TB_HuoDong
-                                       ( ActMingCheng,FaBuRen,JieShao,ShiJian)
+                                       ( ActMingCheng,FaBuRen,JieShao)
                                         VALUES  ( @ActMingCheng,
 			                                      @FaBuRen,
-			                                      @JieShao,
-                                                  @ShiJian
+			                                      @JieShao
             ) ";
             SqlParameter[] para = new SqlParameter[]
             {
               new SqlParameter("ActMingCheng", model.ActMingCheng),
               new SqlParameter("FaBuRen", model.FaBuRen),
-              new SqlParameter("JieShao", model.JieShao),
-              new SqlParameter("ShiJian", model.ShiJian)
+              new SqlParameter("JieShao", model.JieShao)
              };
             sqlh.ExecData(AddEyeActivitysql, para);
             return RedirectToAction("ScanActivityIndex", "EmployeeBenefits");

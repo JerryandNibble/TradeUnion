@@ -29,8 +29,7 @@ namespace SQLSeverDal.EmployeeBenefits
         {
             const string Query_factorySql = @"select ActMingCheng,
                                               FaBuRen,
-                                              JieShao,
-                                              ShiJian
+                                              JieShao
                                               from tb_huodong
                                             ";
             return Query<HuoDong>(Query_factorySql).ToList();
