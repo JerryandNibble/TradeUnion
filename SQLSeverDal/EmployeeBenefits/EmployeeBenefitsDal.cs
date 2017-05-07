@@ -22,6 +22,21 @@ namespace SQLSeverDal.EmployeeBenefits
             return Query<TiJian>(Query_factorySql).ToList();
         }
         /// <summary>
+        /// 添加活动的方法
+        /// </summary>
+        /// <returns></returns>
+        public IList<HuoDong> Query_HuoDong()
+        {
+            const string Query_factorySql = @"select ActMingCheng,
+                                              FaBuRen,
+                                              JieShao,
+                                              ShiJian
+                                              from tb_huodong
+                                            ";
+            return Query<HuoDong>(Query_factorySql).ToList();
+        }
+
+        /// <summary>
         /// 生日
         /// </summary>
         /// <returns></returns>

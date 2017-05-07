@@ -51,6 +51,7 @@
     <Compile Include="Models\FTeShu.cs" />
     <Compile Include="Models\GongGao.cs" />
     <Compile Include="Models\GongHui.cs" />
+    <Compile Include="Models\HuoDong.cs" />
     <Compile Include="Models\JiaGou.cs" />
     <Compile Include="Models\KeHu.cs" />
     <Compile Include="Models\Login.cs" />

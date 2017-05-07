@@ -27,7 +27,17 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 返回EditUnionArchiIndex视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult EditUnionArchiIndex()
+        {
+            //string id = Request["ID"].ToString();
+            //string jgsql = "select * from TB_JiaGou where ID=" + id;
+            // = SQLHelper.GetDataSet(jgsql).Tables[0];
+            return View();
+        }
         /// <summary>
         /// 返回AddUnionPolicyIndex视图
         /// </summary>
@@ -162,7 +172,15 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddGongGaosql, para);
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
-
+        /// <summary>
+        /// 编辑工会架构信息的方法
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult EditJiaGouMSG(JiaGou model)
+        {
+            
+            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+        }
         /// <summary>
         /// 删除工会架构信息的方法
         /// </summary>

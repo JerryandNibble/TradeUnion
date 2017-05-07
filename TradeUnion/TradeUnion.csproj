@@ -433,6 +433,8 @@
     <Content Include="Views\SignUp.cshtml" />
     <Content Include="Views\Login\LoginIndex.cshtml" />
     <Content Include="Views\UnionInfor\EditUnionArchiIndex.cshtml" />
+    <Content Include="Views\EmployeeBenefits\AddActivityIndex.cshtml" />
+    <Content Include="Views\EmployeeBenefits\ScanActivityIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

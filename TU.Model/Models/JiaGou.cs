@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Data.Sql;
+using System.Data.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace TU.Model.Models
 {
+    
     public class JiaGou
     {
         public int ID

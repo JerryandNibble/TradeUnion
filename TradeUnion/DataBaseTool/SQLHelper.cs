@@ -11,7 +11,7 @@ using System.Data.SqlClient;//引入命名空间
 
 
 /// <summary>
-/// DBHelper 的摘要说明：公共类用来操作数据库，静态类通过类名直接调用其中的方法
+/// SQLHelper 的摘要说明：公共类用来操作数据库，静态类通过类名直接调用其中的方法
 /// </summary>
 public class SQLHelper
 {

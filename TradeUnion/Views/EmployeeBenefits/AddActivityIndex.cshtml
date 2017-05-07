@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "AddActivityIndex";
+    Layout = "~/Views/Shared/_UnionLeft.cshtml";
+}
+
+<div class="col-md-11 well admin-content">
+    <form class="form-horizontal" action="/EmployeeBenefits/AddEyeActivity" method="post">
+        <fieldset>
+            <!-- Form Name -->
+            <legend class="text-center">添加教职工文体活动</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">活动名称</label>
+                <div class="col-md-6">
+
+                    <input name="MingCheng" type="text" placeholder="输入文体活动名称" class="form-control input-md" />
+                    <span class="help-block">让用户一目了然</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">活动发起人</label>
+                <div class="col-md-4">
+                    <input name="FabuRen" type="text" placeholder="填写发起人名字" class="form-control input-md" required="" />
+                    <span class="help-block">此处填写发起人名字</span>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">活动内容</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" name="JieShao"></textarea>
+                </div>
+            </div>
+
+            <input name="ShiJian" style="display:none" />
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">选择</label>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-info">确定</button>
+                    <button type="reset" class="btn btn-warning">重置</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

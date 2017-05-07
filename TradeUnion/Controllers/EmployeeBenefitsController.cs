@@ -26,6 +26,14 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
+        /// 返回添加文体活动AddActivityIndex视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddActivityIndex()
+        {
+            return View();
+        }
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
@@ -57,6 +65,17 @@ namespace TradeUnion.Controllers
         {
             EmployeeBenefitsDal ScanBodyExam = new EmployeeBenefitsDal();
             var queryResult = ScanBodyExam.Query_TiJian();
+            ViewBag.List = queryResult;
+            return View();
+        }
+        /// <summary>
+        /// 浏览文体活动方法返回视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanActivityIndex()
+        {
+            EmployeeBenefitsDal ScanActivity = new EmployeeBenefitsDal();
+            var queryResult = ScanActivity.Query_HuoDong();
             ViewBag.List = queryResult;
             return View();
         }
@@ -120,6 +139,32 @@ namespace TradeUnion.Controllers
         }
 
         #endregion
+
+        /// <summary>
+        /// 添加文体活动的方法
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult AddEyeActivity(HuoDong model)
+        {
+            SQLHelper sqlh = new SQLHelper();
+            const string AddEyeActivitysql = @"INSERT INTO dbo.TB_HuoDong
+                                       ( ActMingCheng,FaBuRen,JieShao,ShiJian)
+                                        VALUES  ( @ActMingCheng,
+			                                      @FaBuRen,
+			                                      @JieShao,
+                                                  @ShiJian
+            ) ";
+            SqlParameter[] para = new SqlParameter[]
+            {
+              new SqlParameter("ActMingCheng", model.ActMingCheng),
+              new SqlParameter("FaBuRen", model.FaBuRen),
+              new SqlParameter("JieShao", model.JieShao),
+              new SqlParameter("ShiJian", model.ShiJian)
+             };
+            sqlh.ExecData(AddEyeActivitysql, para);
+            return RedirectToAction("ScanActivityIndex", "EmployeeBenefits");
+        }
 
         #region --教师职工生日信息
         public ActionResult AddBriDay(Shengri model)
