@@ -1,5 +1,6 @@
 ﻿using SQLSeverDal.UnionInfor;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
@@ -27,15 +28,39 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+
+
+        public ActionResult EditArchiDialog(JiaGou model)
+        {
+            return View();
+        }
+
         /// <summary>
         /// 返回EditUnionArchiIndex视图
         /// </summary>
         /// <returns></returns>
-        public ActionResult EditUnionArchiIndex()
+        public ActionResult EditUnionArchiIndex(JiaGou model)
         {
-            //string id = Request["ID"].ToString();
-            //string jgsql = "select * from TB_JiaGou where ID=" + id;
-            // = SQLHelper.GetDataSet(jgsql).Tables[0];
+            //string id = Request["1"].ToString();
+           //tring id = "3";
+       
+            string sql = "select * from TB_JiaGou where ID=" + model.ID;
+            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
+                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
+                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
+                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
+            }
+            return View();
+        }
+        /// <summary>
+        /// 返回删除架构信息DelUnionArchiIndex视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DelUnionArchiIndex()
+        {
             return View();
         }
         /// <summary>
@@ -178,7 +203,22 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult EditJiaGouMSG(JiaGou model)
         {
-            
+            SQLHelper sqlh = new SQLHelper();
+            model.ShiJian = DateTime.Now;
+            const string UpdateJiaGousql = @"UPDATE dbo.TB_JiaGou
+                                            SET MingCheng = @MingCheng,
+                                                FabuRen = @FabuRen,
+                                                JieShao = @JieShao
+                                            WHERE ID = @ID
+            ";
+            SqlParameter[] para = new SqlParameter[]
+            {
+              new SqlParameter("MingCheng",model.MingCheng),
+              new SqlParameter("FabuRen", model.FabuRen),
+              new SqlParameter("JieShao", model.JieShao),
+              new SqlParameter("ID", model.ID)
+             };
+            sqlh.ExecData(UpdateJiaGousql, para);
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
         /// <summary>
@@ -188,11 +228,12 @@ namespace TradeUnion.Controllers
         public ActionResult DelJiaGouMSG(JiaGou model)
         {
             SQLHelper sqlh = new SQLHelper();
-            
-            //const string AddJiaGousql = @"delete 
-            //                              from TB_JiaGou
-            //                              where MingCheng='211'
-
+            const string sql = @"delete from dbo.TB_JiaGou where ID=@f";
+            SqlParameter[] para = new SqlParameter[]
+            {
+              new SqlParameter("f", model.ID)
+            };
+            sqlh.ExecData(sql, para);
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
     }

@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "DelUnionArchiIndex";
+    Layout = "~/Views/Shared/_UnionLeft.cshtml";
+}
+
+@*<div class="col-md-11 well admin-content" id="JiaGou">
+    <form class="form-horizontal" action="/UnionInfor/EditJiaGouMSG" method="get">
+        <fieldset>
+            <!-- Form Name -->
+            <legend class="text-center">编辑工会架构信息</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">架构标题</label>
+                <div class="col-md-6">
+                    <input type="hidden" name="isEdit" value="@ViewBag.isEdit" />
+                    <input name="MingCheng" id="MingCheng" type="text" placeholder="输入架构标题" class="form-control input-md" />
+                    <span class="help-block">目的让用户一目了然</span>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">发布人</label>
+                <div class="col-md-4">
+                    <input name="FabuRen" id="FabuRen" type="text" placeholder="填写发布人名字" class="form-control input-md" value="" required="" />
+                    <span class="help-block">此处应如实填写发布人名字</span>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">架构内容</label>
+                <div class="col-md-8">
+                    <textarea class="form-control" name="JieShao" id="JieShao"></textarea>
+                </div>
+            </div>
+
+            <input name="ShiJian" style="display:none" />
+
+            
+
+
+        </fieldset>
+    </form>
+</div>*@
+
+<div class="col-md-11 well admin-content" id="JiaGou">
+    <form class="form-horizontal" action="/UnionInfor/DelJiaGouMSG" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend class="text-center">确认要删除吗？</legend>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">ID编号</label>
+                <div class="col-md-4">
+                    <input name="ID" type="text" placeholder="输入确认要删除的编号" class="form-control input-md" required="" />
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cancel">选择</label>
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-warning">重置</button>
+                    <button type="submit" class="btn btn-info">确认</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Button (Double) -->
+    @*<div class="form-group">
+            <label class="col-md-4 control-label">选择</label>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-info">确定</button>
+                <button type="reset" class="btn btn-warning">重置</button>
+            </div>
+        </div>*@

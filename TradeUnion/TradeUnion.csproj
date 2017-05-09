@@ -435,6 +435,8 @@
     <Content Include="Views\UnionInfor\EditUnionArchiIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\AddActivityIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\ScanActivityIndex.cshtml" />
+    <Content Include="Views\UnionInfor\DelUnionArchiIndex.cshtml" />
+    <Content Include="Views\UnionInfor\EditArchiDialog.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

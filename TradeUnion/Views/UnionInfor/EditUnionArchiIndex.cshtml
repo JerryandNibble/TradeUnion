@@ -14,18 +14,18 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">架构标题</label>
                 <div class="col-md-6">
-                    <input type="hidden" name="isEdit" value="@ViewBag.isEdit" />
-                    <input name="MingCheng" id="MingCheng" type="text" placeholder="输入架构标题" class="form-control input-md" />
-                    <span class="help-block">目的让用户一目了然</span>
+                   <input type="hidden" name="isEdit" value="@ViewBag.isEdit" />  @*@Html.TextBox("MingCheng")*@
+                   <input name="MingCheng" value="@ViewData["MingCheng"]" id="MingCheng" type="text" class="form-control input-md" />
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label">发布人</label>
-                <div class="col-md-4">
-                    <input name="FabuRen" id="FabuRen" type="text" placeholder="填写发布人名字" class="form-control input-md" value="<%%>" required="" />
-                    <span class="help-block">此处应如实填写发布人名字</span>
+                <div class="col-md-4"> @*value="@Html.TextBox("FabuRen")"*@
+                    <input name="FabuRen" id="FabuRen" type="text"  class="form-control input-md"  value="@ViewData["FabuRen"]" required="" />
+                    <input name="ID" id="ID" type="hidden" value="@ViewData["ID"]"/>
+                    <span class="help-block">此处编辑发布人姓名</span>
                 </div>
             </div>
 
@@ -33,7 +33,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">架构内容</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" name="JieShao" id="JieShao"></textarea>
+                    @*@Html.TextArea("JieShao")*@
+                    <textarea  class="form-control" name="JieShao" id="JieShao">@ViewData["JieShao"]</textarea>
                 </div>
             </div>
 
