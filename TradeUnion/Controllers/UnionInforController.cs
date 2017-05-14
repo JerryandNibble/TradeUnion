@@ -144,7 +144,7 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
         /// <summary>
-        /// 添加工会架构信息的方法
+        /// 添加工会法规信息的方法
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
