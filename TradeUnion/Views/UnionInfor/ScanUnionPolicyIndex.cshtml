@@ -4,59 +4,6 @@
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
 
-@*<div class="col-md-11 well admin-content">
-    <fieldset>
-        <legend class="text-center">浏览工会政策法规</legend>
-        <div class="container">
-            <div class="row col-md-6 custyle">
-                <table class="table table-striped custab">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>架构标题</th>
-                            <th>发布人</th>
-                            <th>介绍</th>
-                            <th class="text-center">操作</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>1</td>
-                        <td>News</td>
-                        <td>News Cate</td>
-                        <td>Emotion</td>
-                        <td class="text-center">
-                            <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
-                            <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Products</td>
-                        <td>Main Products</td>
-                        <td>Love</td>
-                        <td class="text-center">
-                            <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
-                            <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Blogs</td>
-                        <td>Parent Blogs</td>
-                        <td>Family</td>
-                        <td class="text-center">
-                            <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
-                            <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 删除</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </fieldset>
-
-</div>*@
-
-
 
 <div class="col-md-11 well admin-content">
     <fieldset>
@@ -82,8 +29,9 @@
                                 <td>@item.FabuRen</td>
                                 <td>@item.JieShao</td>
                                 <td class="text-center">
-                                    <a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> 编辑</a>
-                                    <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> 删除</a>
+                                   
+                                    <a href="/UnionInfor/EditPolicyDialog" class='btn btn-info btn-xs'><span class="glyphicon glyphicon-edit"></span>编辑</a>
+                                    <a href="/UnionInfor/DelUnionPolicyIndex" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span>删除</a>
                                 </td>
                             </tr>
                         }

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "DelUnionArchiIndex";
+    Layout = "~/Views/Shared/_UnionLeft.cshtml";
+}
+
+
+<div class="col-md-11 well admin-content" id="FaGui">
+    <form class="form-horizontal" action="/UnionInfor/DelPolicyMSG" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend class="text-center">确认要删除吗？</legend>
+
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label">ID编号</label>
+                <div class="col-md-4">
+                    <input name="ID" type="text" placeholder="输入确认要删除的编号" class="form-control input-md" required="" />
+                </div>
+            </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="cancel">选择</label>
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-warning">重置</button>
+                    <button type="submit" class="btn btn-info">确认</button>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Button (Double) -->
+    @*<div class="form-group">
+            <label class="col-md-4 control-label">选择</label>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-info">确定</button>
+                <button type="reset" class="btn btn-warning">重置</button>
+            </div>
+        </div>*@

@@ -437,6 +437,12 @@
     <Content Include="Views\EmployeeBenefits\ScanActivityIndex.cshtml" />
     <Content Include="Views\UnionInfor\DelUnionArchiIndex.cshtml" />
     <Content Include="Views\UnionInfor\EditArchiDialog.cshtml" />
+    <Content Include="Views\UnionInfor\EditAnnounDialog.cshtml" />
+    <Content Include="Views\UnionInfor\EditUnionAnnounIndex.cshtml" />
+    <Content Include="Views\UnionInfor\EditUnionPolicyIndex.cshtml" />
+    <Content Include="Views\UnionInfor\DelUnionAnnounIndex.cshtml" />
+    <Content Include="Views\UnionInfor\DelUnionPolicyIndex.cshtml" />
+    <Content Include="Views\UnionInfor\EditPolicyDialog.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
