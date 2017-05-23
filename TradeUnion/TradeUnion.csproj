@@ -143,6 +143,7 @@
     <Compile Include="Controllers\IntroUnionController.cs" />
     <Compile Include="Controllers\JoinUsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
     <Compile Include="Controllers\UnionFunctionController.cs" />
     <Compile Include="Controllers\UnionInforController.cs" />
@@ -163,6 +164,7 @@
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\css.css" />
+    <Content Include="Content\css\Datapicker.css" />
     <Content Include="Content\css\font-awesome-4.7.0\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\css\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
@@ -264,6 +266,7 @@
     <Content Include="images\Login.GIF" />
     <Content Include="images\login.jpg" />
     <Content Include="images\LoginBg.gif" />
+    <Content Include="images\man-passportsize-silhouette-icon-256x256.png" />
     <Content Include="images\menu_bg.jpg" />
     <Content Include="images\menu_bt.gif" />
     <Content Include="images\menu_bt.jpg" />
@@ -424,7 +427,7 @@
     <Content Include="Views\EmployeeBenefits\ScanBirthdayIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\ScanInsuranceIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\ScanSpecialIndex.cshtml" />
-    <Content Include="Views\JoinUs\JoinUsIndex.cshtml" />
+    <Content Include="Views\Profile\ProfileIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\EmployeeFamilyIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\AddChildIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\AddChildStatusIndex.cshtml" />
@@ -435,14 +438,8 @@
     <Content Include="Views\UnionInfor\EditUnionArchiIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\AddActivityIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\ScanActivityIndex.cshtml" />
-    <Content Include="Views\UnionInfor\DelUnionArchiIndex.cshtml" />
-    <Content Include="Views\UnionInfor\EditArchiDialog.cshtml" />
-    <Content Include="Views\UnionInfor\EditAnnounDialog.cshtml" />
     <Content Include="Views\UnionInfor\EditUnionAnnounIndex.cshtml" />
     <Content Include="Views\UnionInfor\EditUnionPolicyIndex.cshtml" />
-    <Content Include="Views\UnionInfor\DelUnionAnnounIndex.cshtml" />
-    <Content Include="Views\UnionInfor\DelUnionPolicyIndex.cshtml" />
-    <Content Include="Views\UnionInfor\EditPolicyDialog.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

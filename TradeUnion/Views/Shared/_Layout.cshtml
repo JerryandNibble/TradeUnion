@@ -18,19 +18,37 @@
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-              <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("首页资讯", "HomeIndex", "Home")</li>
                         <li>@Html.ActionLink("工会职能", "UnionFunctionIndex", "UnionFunction")</li>
-                        <li><a href="#">工会信息</a></li>
-                        <li><a href="#">工会成员</a></li>
-                        <li><a href="#">教职工福利</a></li>
-                        <li><a href="#">教职工家属</a></li>
-                        <li><a href="#">加入我们</a></li>
+                        <li>@Html.ActionLink("工会信息", "UnionFunctionIndex", "UnionFunction")</li>
+                        <li>@Html.ActionLink("工会成员", "UnionFunctionIndex", "UnionFunction")</li>
+                        <li>@Html.ActionLink("教职工福利", "UnionFunctionIndex", "UnionFunction")</li>
+                        <li>@Html.ActionLink("教职工家属", "UnionFunctionIndex", "UnionFunction")</li>
                     </ul>
-              </div>
+                   @*显示右侧使用者信息navbar-nav*@  
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>Admin <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Profile/ProfileIndex"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+
+
+
+
+
 
 
     @RenderBody()
@@ -38,5 +56,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 </body>
 </html>

@@ -1,17 +1,24 @@
-﻿using SQLSeverDal.UnionInfor;
+﻿using Dapper;
+using SQLServerDal;
+using SQLSeverDal.UnionInfor;
 using System;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
 
 namespace TradeUnion.Controllers
 {
-
+    /// <summary>
+    /// 工会信息
+    /// </summary>
     public class UnionInforController : Controller
     {
+
+        #region --主界面视图
         /// <summary>
-        /// 返回UnionInforIndex视图
+        /// 返回工会主页视图
         /// </summary>
         /// <returns></returns>
         // GET: UnionInfor
@@ -19,10 +26,24 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+        #endregion
 
-        #region 返回添加工会信息视图
+        #region 架构信息方法
+
         /// <summary>
-        /// 返回AddUnionArchiIndex视图
+        /// 浏览工会架构全部信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanUnionArchiIndex()
+        {
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_JiaGou();
+            ViewBag.List = queryResult;
+            return View();
+        }
+
+        /// <summary>
+        /// 返回添加架构信息页面
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionArchiIndex()
@@ -30,25 +51,7 @@ namespace TradeUnion.Controllers
             //返回视图，即点击左侧链接时，先返回一个AddUnionAnnounIndex页面，具体提交该页面表单数据的方法在本控制器下面写出来。
             return View();
         }
-        /// <summary>
-        /// 返回AddUnionPolicyIndex视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult AddUnionPolicyIndex()
-        {
-            return View();
-        }
-        /// <summary>
-        /// 返回AddUnionAnnounIndex视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult AddUnionAnnounIndex()
-        {
-            return View();
-        }
-        #endregion
 
-        #region 添加工会信息的方法
         /// <summary>
         /// 添加工会架构信息的方法
         /// </summary>
@@ -56,7 +59,7 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult AddJiaGouMSG(JiaGou model)
         {
-       
+
             SQLHelper sqlh = new SQLHelper();
             model.ShiJian = DateTime.Now;
             const string AddJiaGousql = @"INSERT INTO dbo.TB_JiaGou
@@ -77,6 +80,80 @@ namespace TradeUnion.Controllers
 
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
+
+        /// <summary>
+        /// 删除工会架构信息的方法
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DelUnionArchiIndex(int Id = 0)
+        {
+            const string DelectedJIAGOUsql = @"
+                        DELETE FROM dbo.tb_jiagou
+                        WHERE ID = @ID
+
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelectedJIAGOUsql, dp) > 0;
+            }
+            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+        }
+
+        
+
+
+        public ActionResult EditUnionArchiIndex(int Id = 0)
+        {
+               UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryJiaGou(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
+
+        public ActionResult EditUnionArchisave(JiaGou model)
+        {
+            const string editUnionArchisaveSql = @"
+				UPDATE dbo.TB_JiaGou
+				SET	MingCheng=@MingCheng,
+					FabuRen=@FabuRen,
+					JieShao=@JieShao
+				WHERE ID=@ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                var result = conn.Execute(editUnionArchisaveSql, model) > 0;
+            }
+            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+        }
+
+
+
+        #endregion
+
+        #region --政策法规方法
+
+        /// <summary>
+        /// 浏览工会政策法规全部信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanUnionPolicyIndex()
+        {
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_FaGui();
+            ViewBag.List = queryResult;
+            return View();
+        }
+
+        /// <summary>
+        /// 返回政策法规主页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddUnionPolicyIndex()
+        {
+            return View();
+        }
+
         /// <summary>
         /// 添加工会法规信息的方法
         /// </summary>
@@ -102,9 +179,100 @@ namespace TradeUnion.Controllers
              };
             sqlh.ExecData(AddFaGuisql, para);
             return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
-            
+
         }
-        
+
+        /// <summary>
+        /// 删除政策法规信息的方法
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DelFaGuiMSG(int Id = 0)
+        {
+            const string DelectedFaGuisql = @"
+                        DELETE FROM dbo.TB_FaGui
+                        WHERE ID = @ID
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelectedFaGuisql, dp) > 0;
+            }
+            return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
+        }
+
+        /// <summary>
+        /// 修改工会法规信息的方法
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+
+
+        /// <summary>
+        /// 返回工会法规信息到视图的方法(Controller到View)
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult EditUnionPolicyIndex(FaGui model)
+        {
+            string sql = "select * from TB_FaGui where ID=" + model.ID;
+            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
+                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
+                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
+                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
+            }
+            return View();
+        }
+        /// <summary>
+        /// 编辑保存法规信息的方法
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult EditPolicyMSG(int Id = 0)
+        {
+            const string EditdFaGuisql = @"UPDATE dbo.TB_FaGui
+                                            SET MingCheng = @MingCheng,
+                                                FabuRen = @FabuRen,
+                                                JieShao = @JieShao
+                                            WHERE ID = @ID
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(EditdFaGuisql, dp) > 0;
+            }
+            return RedirectToAction("EditUnionPolicyIndex", "UnionInfor");
+        }
+
+        #endregion
+
+        #region --最新公告方法
+
+        /// <summary>
+        /// 浏览工会政策法规全部信息
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanUnionAnnounIndex()
+        {
+            UnionInforDal ScanUnion = new UnionInforDal();
+            var queryResult = ScanUnion.Query_GongGao();
+            ViewBag.List = queryResult;
+            return View();
+        }
+
+        /// <summary>
+        /// 返回最新公告主页
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddUnionAnnounIndex()
+        {
+            return View();
+        }
+
         /// <summary>
         /// 添加工会公告信息的方法
         /// </summary>
@@ -112,6 +280,7 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult AddGongGaoMSG(GongGao model)
         {
+
             SQLHelper sqlh = new SQLHelper();
             model.ShiJian = DateTime.Now;
             const string AddGongGaosql = @"INSERT INTO dbo.TB_GongGao
@@ -131,177 +300,85 @@ namespace TradeUnion.Controllers
             sqlh.ExecData(AddGongGaosql, para);
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
-        #endregion
 
-
-
-
-
-        #region 返回删除信息的视图
         /// <summary>
-        /// 返回删除架构信息DelUnionArchiIndex视图
+        /// 删除最新公告信息的方法
         /// </summary>
         /// <returns></returns>
-        public ActionResult DelUnionArchiIndex()
+        public ActionResult DelGongGaoMSG(int Id = 0)
         {
-            return View();
-        }
-
-        public ActionResult DelUnionPolicyIndex()
-        {
-            return View();
-        }
-
-        public ActionResult DelUnionAnnounIndex()
-        {
-            return View();
-        }
-        #endregion
-
-        #region 删除工会信息的方法
-        /// <summary>
-        /// 删除工会架构信息的方法
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult DelArchiMSG(JiaGou model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            const string sql = @"delete from dbo.TB_JiaGou where ID=@f";
-            SqlParameter[] para = new SqlParameter[]
+            const string DelectedGongGaosql = @"
+                        DELETE FROM dbo.TB_GongGao
+                        WHERE ID = @ID
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
             {
-              new SqlParameter("f", model.ID)
-            };
-            sqlh.ExecData(sql, para);
-            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
-        }
-
-        public ActionResult DelPolicyMSG(JiaGou model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            const string sql = @"delete from dbo.TB_JiaGou where ID=@f";
-            SqlParameter[] para = new SqlParameter[]
-            {
-              new SqlParameter("f", model.ID)
-            };
-            sqlh.ExecData(sql, para);
-            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
-        }
-
-        public ActionResult DelAnnounMSG(JiaGou model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            const string sql = @"delete from dbo.TB_JiaGou where ID=@f";
-            SqlParameter[] para = new SqlParameter[]
-            {
-              new SqlParameter("f", model.ID)
-            };
-            sqlh.ExecData(sql, para);
-            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
-        }
-        #endregion
-
-
-
-
-
-        #region 返回编辑确认ID视图
-        public ActionResult EditArchiDialog(JiaGou model)
-        {
-            return View();
-        }
-
-        public ActionResult EditAnnounDialog(GongGao model)
-        {
-            return View();
-        }
-
-        public ActionResult EditPolicyDialog(FaGui model)
-        {
-            return View();
-        }
-        #endregion
-
-        #region 返回工会信息到视图的方法(Controller到View)
-        /// <summary>
-        /// 返回EditUnionArchiIndex视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult EditUnionArchiIndex(JiaGou model)
-        {
-            string sql = "select * from TB_JiaGou where ID=" + model.ID;
-            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
-            if (dt.Rows.Count > 0)
-            {
-                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
-                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
-                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
-                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelectedGongGaosql, dp) > 0;
             }
-            return View();
+            return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
-        /// <summary>
-        /// 返回EditUnionAnnounIndex视图
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public ActionResult EditUnionAnnounIndex(GongGao model)
-        {
-            string sql = "select * from TB_GongGao where ID=" + model.ID;
-            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
-            if (dt.Rows.Count > 0)
-            {
-                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
-                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
-                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
-                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
-            }
-            return View();
-        }
-        /// <summary>
-        /// 返回EditUnionFaGuiIndex视图
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public ActionResult EditUnionPolicyIndex(FaGui model)
-        {
-            string sql = "select * from TB_FaGui where ID=" + model.ID;
-            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
-            if (dt.Rows.Count > 0)
-            {
-                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
-                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
-                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
-                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
-            }
-            return View();
-        }
-        #endregion
 
-        #region 编辑工会信息的方法
+
+
         /// <summary>
-        /// 编辑工会架构信息的方法
+        /// 修改最新公告信息的方法
         /// </summary>
+        /// <param name="Id"></param>
         /// <returns></returns>
-        public ActionResult EditArchiMSG(JiaGou model)
+        public ActionResult EditAnnounMSG(int Id = 0)
         {
-            SQLHelper sqlh = new SQLHelper();
-            model.ShiJian = DateTime.Now;
-            const string UpdateJiaGousql = @"UPDATE dbo.TB_JiaGou
+            const string EditGongGaosql = @"UPDATE dbo.TB_GongGao
                                             SET MingCheng = @MingCheng,
                                                 FabuRen = @FabuRen,
                                                 JieShao = @JieShao
                                             WHERE ID = @ID
             ";
-            SqlParameter[] para = new SqlParameter[]
+            using (DbConnection conn = DbFactory.CreateConnection())
             {
-              new SqlParameter("MingCheng",model.MingCheng),
-              new SqlParameter("FabuRen", model.FabuRen),
-              new SqlParameter("JieShao", model.JieShao),
-              new SqlParameter("ID", model.ID)
-             };
-            sqlh.ExecData(UpdateJiaGousql, para);
-            return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(EditGongGaosql, dp) > 0;
+            }
+            return RedirectToAction("EditUnionAnnounIndex", "UnionInfor");
         }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #region 编辑工会信息的方法
+
 
         public ActionResult EditAnnounMSG(GongGao model)
         {
@@ -345,47 +422,6 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
         }
         #endregion
-
-
-
-
-
-        #region 浏览工会信息同时返回视图
-        /// <summary>
-        /// 浏览工会架构信息的同时返回视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanUnionArchiIndex()
-        {
-            UnionInforDal ScanUnion = new UnionInforDal();
-            var queryResult = ScanUnion.Query_JiaGou();
-            ViewBag.List = queryResult;
-            return View();
-        }
-        /// <summary>
-        /// 浏览工会政策法规信息的同时返回视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanUnionPolicyIndex()
-        {
-            UnionInforDal ScanUnion = new UnionInforDal();
-            var queryResult = ScanUnion.Query_FaGui();
-            ViewBag.List = queryResult;
-            return View();
-        }
-        /// <summary>
-        /// 浏览工会政策法规信息的同时返回视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanUnionAnnounIndex()
-        {
-            UnionInforDal ScanUnion = new UnionInforDal();
-            var queryResult = ScanUnion.Query_GongGao();
-            ViewBag.List = queryResult;
-            return View();
-        }
-        #endregion
-
 
 
     }

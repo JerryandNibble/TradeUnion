@@ -22,7 +22,7 @@
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label">发布人</label>
-                <div class="col-md-4"> @*value="@Html.TextBox("FabuRen")"*@
+                <div class="col-md-4">
                     <input name="FabuRen" id="FabuRen" type="text"  class="form-control input-md"  value="@ViewData["FabuRen"]" required="" />
                     <input name="ID" id="ID" type="hidden" value="@ViewData["ID"]"/>
                     <span class="help-block">此处编辑发布人姓名</span>
@@ -33,7 +33,6 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">架构内容</label>
                 <div class="col-md-8">
-                    @*@Html.TextArea("JieShao")*@
                     <textarea  class="form-control" name="JieShao" id="JieShao">@ViewData["JieShao"]</textarea>
                 </div>
             </div>

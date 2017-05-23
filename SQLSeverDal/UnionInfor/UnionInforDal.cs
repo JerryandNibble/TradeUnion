@@ -42,5 +42,30 @@ namespace SQLSeverDal.UnionInfor
                                            ";
             return Query<GongGao>(Query_factorySql).ToList();
         }
+
+
+
+        #region --对BendInfo数据进行遍历操作的Dal语句--
+        public JiaGou QueryJiaGou(int Id)
+        {
+            const string Query_OnesMesgBendInfosql = @"select id,
+                                            mingcheng,
+                                            faburen,
+                                            jieshao,
+                                            shijian 
+                                            from tb_jiagou
+                                            where ID = @Id
+                                           ";
+            //using (DbConnection conn = DbFactory.CreateConnection())
+            //{
+            //    return conn.Query<Tinfo>(Query_MesgBendInfo).ToList();
+            //}
+
+            var Model = base.QueryFirst<JiaGou>(Query_OnesMesgBendInfosql, new { Id = Id });
+            return Model;
+        }
+        #endregion
+
+
     }
 }

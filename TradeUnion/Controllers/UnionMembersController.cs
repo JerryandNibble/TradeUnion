@@ -8,7 +8,7 @@ namespace TradeUnion.Controllers
     public class UnionMembersController : Controller
     {
         /// <summary>
-        /// 
+        /// 返回工会成员管理视图
         /// </summary>
         /// <returns></returns>
         // GET: UnionMembers
@@ -41,7 +41,6 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult AddMbs(KeHu model)
         {
-
             SQLHelper sqlh = new SQLHelper();
             const string AddMbssql = @"INSERT INTO dbo.TB_KeHu
                                        ( Address, BianHao,IDCard,LeiXing,LianXIFangShi,PassWord,ShengRi,XingMing) 
@@ -68,6 +67,15 @@ namespace TradeUnion.Controllers
              };
             sqlh.ExecData(AddMbssql, para);
             return RedirectToAction("ScanUnionMembersIndex", "UnionMembers");
+        }
+
+        /// <summary>
+        /// 返回删除工会成员信息DelUnionArchiIndex视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DelUnionMemberIndex()
+        {
+            return View();
         }
     }
 }
