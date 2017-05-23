@@ -106,30 +106,29 @@ namespace TradeUnion.Controllers
 
         public ActionResult EditUnionArchiIndex(int Id = 0)
         {
-               UnionInforDal unioninforDal = new UnionInforDal();
+            UnionInforDal unioninforDal = new UnionInforDal();
             var queryResult = unioninforDal.QueryJiaGou(Id);
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }
 
-        public ActionResult EditUnionArchisave(JiaGou model)
+        public ActionResult EditUnionArchiSave(JiaGou model)
         {
-            const string editUnionArchisaveSql = @"
-				UPDATE dbo.TB_JiaGou
-				SET	MingCheng=@MingCheng,
-					FabuRen=@FabuRen,
-					JieShao=@JieShao
-				WHERE ID=@ID";
+            const string EditUnionArchiSaveSql = @"UPDATE dbo.TB_JiaGou
+				                                   SET	MingCheng=@MingCheng,
+					                                    FabuRen=@FabuRen,
+					                                    JieShao=@JieShao
+				                                   WHERE ID=@ID";
             using (DbConnection conn = DbFactory.CreateConnection())
             {
-                var result = conn.Execute(editUnionArchisaveSql, model) > 0;
+                var result = conn.Execute(EditUnionArchiSaveSql, model) > 0;
             }
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }
 
-
-
         #endregion
+
+
 
         #region --政策法规方法
 
@@ -213,41 +212,31 @@ namespace TradeUnion.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ActionResult EditUnionPolicyIndex(FaGui model)
+        public ActionResult EditUnionPolicyIndex(int Id = 0)
         {
-            string sql = "select * from TB_FaGui where ID=" + model.ID;
-            DataTable dt = SQLHelper.GetDataSet(sql).Tables[0];
-            if (dt.Rows.Count > 0)
-            {
-                ViewData["MingCheng"] = dt.Rows[0]["MingCheng"].ToString();
-                ViewData["FabuRen"] = dt.Rows[0]["FabuRen"].ToString();
-                ViewData["JieShao"] = dt.Rows[0]["JieShao"].ToString();
-                ViewData["ID"] = dt.Rows[0]["ID"].ToString();
-            }
-            return View();
+            UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryFaGui(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
         }
         /// <summary>
         /// 编辑保存法规信息的方法
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ActionResult EditPolicyMSG(int Id = 0)
+        public ActionResult EditUnionPolicySave(FaGui model)
         {
-            const string EditdFaGuisql = @"UPDATE dbo.TB_FaGui
-                                            SET MingCheng = @MingCheng,
-                                                FabuRen = @FabuRen,
-                                                JieShao = @JieShao
-                                            WHERE ID = @ID
-            ";
+            const string EditUnionPolicySaveSql = @"UPDATE dbo.TB_FaGui
+				                                    SET	MingCheng=@MingCheng,
+					                                    FabuRen=@FabuRen,
+					                                    JieShao=@JieShao
+				                                    WHERE ID=@ID";
             using (DbConnection conn = DbFactory.CreateConnection())
             {
-                DynamicParameters dp = new DynamicParameters();
-                dp.Add("ID", Id);
-                var result = conn.Execute(EditdFaGuisql, dp) > 0;
+                var result = conn.Execute(EditUnionPolicySaveSql, model) > 0;
             }
-            return RedirectToAction("EditUnionPolicyIndex", "UnionInfor");
+            return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
         }
-
         #endregion
 
         #region --最新公告方法
@@ -320,109 +309,39 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
 
-
+        /// <summary>
+        /// 返回工会最新公告到视图的方法(Controller到View)
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public ActionResult EditUnionAnnounIndex(int Id = 0)
+        {
+            UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryGongGao(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
 
         /// <summary>
         /// 修改最新公告信息的方法
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ActionResult EditAnnounMSG(int Id = 0)
+        public ActionResult EditAnnounSave(GongGao model)
         {
-            const string EditGongGaosql = @"UPDATE dbo.TB_GongGao
-                                            SET MingCheng = @MingCheng,
-                                                FabuRen = @FabuRen,
-                                                JieShao = @JieShao
-                                            WHERE ID = @ID
-            ";
+            const string EditUnionAnnounSaveSql = @"UPDATE dbo.TB_GongGao
+				                                    SET	MingCheng=@MingCheng,
+					                                    FabuRen=@FabuRen,
+					                                    JieShao=@JieShao
+				                                    WHERE ID=@ID";
             using (DbConnection conn = DbFactory.CreateConnection())
             {
-                DynamicParameters dp = new DynamicParameters();
-                dp.Add("ID", Id);
-                var result = conn.Execute(EditGongGaosql, dp) > 0;
+                var result = conn.Execute(EditUnionAnnounSaveSql, model) > 0;
             }
-            return RedirectToAction("EditUnionAnnounIndex", "UnionInfor");
-        }
-
-        #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #region 编辑工会信息的方法
-
-
-        public ActionResult EditAnnounMSG(GongGao model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            model.ShiJian = DateTime.Now;
-            const string UpdateGongGaosql = @"UPDATE dbo.TB_GongGao
-                                            SET MingCheng = @MingCheng,
-                                                FabuRen = @FabuRen,
-                                                JieShao = @JieShao
-                                            WHERE ID = @ID
-            ";
-            SqlParameter[] para = new SqlParameter[]
-            {
-              new SqlParameter("MingCheng",model.MingCheng),
-              new SqlParameter("FabuRen", model.FabuRen),
-              new SqlParameter("JieShao", model.JieShao),
-              new SqlParameter("ID", model.ID)
-             };
-            sqlh.ExecData(UpdateGongGaosql, para);
             return RedirectToAction("ScanUnionAnnounIndex", "UnionInfor");
         }
 
-        public ActionResult EditPolicyMSG(GongGao model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            model.ShiJian = DateTime.Now;
-            const string UpdateFaGuisql = @"UPDATE dbo.TB_FaGui
-                                            SET MingCheng = @MingCheng,
-                                                FabuRen = @FabuRen,
-                                                JieShao = @JieShao
-                                            WHERE ID = @ID
-            ";
-            SqlParameter[] para = new SqlParameter[]
-            {
-              new SqlParameter("MingCheng",model.MingCheng),
-              new SqlParameter("FabuRen", model.FabuRen),
-              new SqlParameter("JieShao", model.JieShao),
-              new SqlParameter("ID", model.ID)
-             };
-            sqlh.ExecData(UpdateFaGuisql, para);
-            return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
-        }
         #endregion
-
 
     }
 }
