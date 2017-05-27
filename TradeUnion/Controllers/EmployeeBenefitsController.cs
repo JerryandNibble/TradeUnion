@@ -18,6 +18,8 @@ namespace TradeUnion.Controllers
         #endregion
 
 
+
+
         #region 体检信息方法
         /// <summary>
         /// 浏览体检信息的方法
@@ -165,8 +167,8 @@ namespace TradeUnion.Controllers
 
         public ActionResult EditShengRiIndex(int Id = 0)
         {
-            EmployeeBenefitsDal unioninforDal = new EmployeeBenefitsDal();
-            var queryResult = unioninforDal.QueryShengRi(Id);
+            EmployeeBenefitsDal ShengRiInforDal = new EmployeeBenefitsDal();
+            var queryResult = ShengRiInforDal.QueryShengRi(Id);
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }
@@ -186,69 +188,7 @@ namespace TradeUnion.Controllers
         }
         #endregion
 
-
         #region 保险基金方法
-        public ActionResult AddInsuranceIndex()
-        {
-            return View();
-        }
-
-
-
-        #endregion
-
-
-        #region 特殊情况方法
-        public ActionResult AddSpecialIndex()
-        {
-            return View();
-        }
-
-
-
-        #endregion
-
-        #region ---返回视图
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        // GET: EmployeeBenefits
-
-
-        /// <summary>
-        /// 返回添加文体活动AddActivityIndex视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult AddActivityIndex()
-        {
-            return View();
-        }
-
-
-
-
-
-        /// <summary>
-        /// 浏览文体活动方法返回视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanActivityIndex()
-        {
-            EmployeeBenefitsDal ScanActivity = new EmployeeBenefitsDal();
-            var queryResult = ScanActivity.Query_HuoDong();
-            ViewBag.List = queryResult;
-            return View();
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public ActionResult ScanInsuranceIndex()
         {
             EmployeeBenefitsDal ScanInsurance = new EmployeeBenefitsDal();
@@ -256,55 +196,12 @@ namespace TradeUnion.Controllers
             ViewBag.List = queryResult;
             return View();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanSpecialIndex()
+
+        public ActionResult AddInsuranceIndex()
         {
-            EmployeeBenefitsDal ScanSpecial = new EmployeeBenefitsDal();
-            var queryResult = ScanSpecial.Query_TeShu();
-            ViewBag.List = queryResult;
             return View();
         }
-        #endregion
 
-        #region --体检信息 
-        
-
-        #endregion
-
-        /// <summary>
-        /// 添加文体活动的方法
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public ActionResult AddEyeActivity(HuoDong model)
-        {
-            SQLHelper sqlh = new SQLHelper();
-            const string AddEyeActivitysql = @"INSERT INTO dbo.TB_HuoDong
-                                       ( ActMingCheng,FaBuRen,JieShao)
-                                        VALUES  ( @ActMingCheng,
-			                                      @FaBuRen,
-			                                      @JieShao
-            ) ";
-            SqlParameter[] para = new SqlParameter[]
-            {
-              new SqlParameter("ActMingCheng", model.ActMingCheng),
-              new SqlParameter("FaBuRen", model.FaBuRen),
-              new SqlParameter("JieShao", model.JieShao)
-             };
-            sqlh.ExecData(AddEyeActivitysql, para);
-            return RedirectToAction("ScanActivityIndex", "EmployeeBenefits");
-        }
-
-        #region --教师职工生日信息
-        
-
-
-        #endregion
-
-        #region --健康基金投险信息
         public ActionResult AddEmpBenf(Baoxian model)
         {
             SQLHelper sqlh = new SQLHelper();
@@ -328,11 +225,60 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanInsuranceIndex", "EmployeeBenefits");
         }
 
+        public ActionResult DelBaoXian(int Id = 0)
+        {
+            const string DelBaoXiansql = @"
+                        DELETE FROM dbo.tb_baoxian
+                        WHERE ID = @ID
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelBaoXiansql, dp) > 0;
+            }
+            return RedirectToAction("ScanInsuranceIndex", "EmployeeBenefits");
+        }
 
+        public ActionResult EditBaoXianIndex(int Id = 0)
+        {
+            EmployeeBenefitsDal BaoXianInforDal = new EmployeeBenefitsDal();
+            var queryResult = BaoXianInforDal.QueryShengRi(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
+
+        public ActionResult EditBaoXianSave(JiaGou model)
+        {
+            const string EditBaoXianSaveSql = @"UPDATE dbo.TB_BaoXian
+				                                   SET	BianHao=@BianHao,
+					                                    XingMing=@XingMing,
+					                                    ShengRi=@YouXiaoQi,
+                                                        BaoXian=@BaoXian,
+                                                        FenSHu=@FenSHu
+				                                   WHERE ID=@ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                var result = conn.Execute(EditBaoXianSaveSql, model) > 0;
+            }
+            return RedirectToAction("ScanInsuranceIndex", "EmployeeBenefits");
+        }
         #endregion
 
+        #region 特殊情况方法
+        public ActionResult ScanSpecialIndex()
+        {
+            EmployeeBenefitsDal ScanSpecial = new EmployeeBenefitsDal();
+            var queryResult = ScanSpecial.Query_TeShu();
+            ViewBag.List = queryResult;
+            return View();
+        }
 
-        #region --特殊情况
+        public ActionResult AddSpecialIndex()
+        {
+            return View();
+        }
+
         public ActionResult AddSpe(Teshu model)
         {
             SQLHelper sqlh = new SQLHelper();
@@ -353,8 +299,88 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanSpecialIndex", "EmployeeBenefits");
         }
 
+        public ActionResult DelFTeSHu(int Id = 0)
+        {
+            const string DelFTeSHusql = @"
+                        DELETE FROM dbo.tb_fteshu
+                        WHERE ID = @ID
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelFTeSHusql, dp) > 0;
+            }
+            return RedirectToAction("ScanSpecialIndex", "EmployeeBenefits");
+        }
 
+        public ActionResult EditFTeSHuIndex(int Id = 0)
+        {
+            EmployeeBenefitsDal FTeShuInforDal = new EmployeeBenefitsDal();
+            var queryResult = FTeShuInforDal.QueryTeShu(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
+
+        public ActionResult EditFTeSHuInforSave(JiaGou model)
+        {
+            const string EditFTeSHuSaveSql = @"UPDATE dbo.TB_FTeShu
+				                                   SET	BianHao=@BianHao,
+					                                    XingMing=@XingMing,
+					                                    TeShu=@TeShu
+				                                   WHERE ID=@ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                var result = conn.Execute(EditFTeSHuSaveSql, model) > 0;
+            }
+            return RedirectToAction("ScanSpecialIndex", "EmployeeBenefits");
+        }
         #endregion
 
+
+
+        #region ---返回视图
+        /// <summary>
+        /// 返回添加文体活动AddActivityIndex视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddActivityIndex()
+        {
+            return View();
+        }
+
+
+        public ActionResult AddEyeActivity(HuoDong model)
+        {
+            SQLHelper sqlh = new SQLHelper();
+            const string AddEyeActivitysql = @"INSERT INTO dbo.TB_HuoDong
+                                       ( ActMingCheng,FaBuRen,JieShao)
+                                        VALUES  ( @ActMingCheng,
+			                                      @FaBuRen,
+			                                      @JieShao
+            ) ";
+            SqlParameter[] para = new SqlParameter[]
+            {
+              new SqlParameter("ActMingCheng", model.ActMingCheng),
+              new SqlParameter("FaBuRen", model.FaBuRen),
+              new SqlParameter("JieShao", model.JieShao)
+             };
+            sqlh.ExecData(AddEyeActivitysql, para);
+            return RedirectToAction("ScanActivityIndex", "EmployeeBenefits");
+        }
+
+
+        /// <summary>
+        /// 浏览文体活动方法返回视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanActivityIndex()
+        {
+            EmployeeBenefitsDal ScanActivity = new EmployeeBenefitsDal();
+            var queryResult = ScanActivity.Query_HuoDong();
+            ViewBag.List = queryResult;
+            return View();
+        } 
+        #endregion
     }
 }
