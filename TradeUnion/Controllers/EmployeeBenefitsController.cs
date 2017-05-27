@@ -239,8 +239,8 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanInsuranceIndex", "EmployeeBenefits");
         }
 
-        public ActionResult EditBaoXianIndex(int Id = 0)
-        {
+        public ActionResult EditInsuranceIndex(int Id = 0)
+        {//EditBaoXianIndex对应一个同名页面，这样通过传值，将内容传递到对应页面的文本框中
             EmployeeBenefitsDal BaoXianInforDal = new EmployeeBenefitsDal();
             var queryResult = BaoXianInforDal.QueryShengRi(Id);
             ViewData.Model = queryResult;

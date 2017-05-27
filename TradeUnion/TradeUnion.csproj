@@ -443,6 +443,7 @@
     <Content Include="Views\UnionMembers\EditUnionMembersIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditBodyExamIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditShengRiIndex.cshtml" />
+    <Content Include="Views\EmployeeBenefits\EditInsuranceIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
