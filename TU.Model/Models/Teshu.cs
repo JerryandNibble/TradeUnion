@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TU.Model.Models
 {
-    public class Teshu
+    public class FTeshu
     {
         public int ID
         {

@@ -444,6 +444,7 @@
     <Content Include="Views\EmployeeBenefits\EditBodyExamIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditShengRiIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditInsuranceIndex.cshtml" />
+    <Content Include="Views\EmployeeBenefits\EditTeShuIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1,31 +1,33 @@
 ﻿
 @{
-    ViewBag.Title = "AddSpecialIndex";
+    ViewBag.Title = "EditTeShuIndex";
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
 
+@model TU.Model.Models.FTeShu
+
 <div class="col-md-11 well admin-content">
 
-    <form class="form-horizontal" action="/EmployeeBenefits/AddSpe" method="post">
+    <form class="form-horizontal" action="/EmployeeBenefits/EditFTeSHuInforSave" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend class="text-center">添加特殊情况</legend>
+            <legend class="text-center">编辑特殊情况</legend>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" >编号</label>
+                <label class="col-md-4 control-label">编号</label>
                 <div class="col-md-4">
-                    <input  name="BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
+                    <input name="BianHao" value="@Model.BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
                     <span class="help-block">自动选择</span>
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" >姓名</label>
+                <label class="col-md-4 control-label">姓名</label>
                 <div class="col-md-4">
-                    <input  name="XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
+                    <input name="XingMing" value="@Model.XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
                     <span class="help-block">自动选择</span>
                 </div>
             </div>
@@ -34,17 +36,17 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">情况</label>
                 <div class="col-md-8">
-                    <textarea name="TeShu" class="form-control" ></textarea>
+                    <textarea name="TeShu" class="form-control">@Model.TeShu</textarea>
                     <span class="help-block">请详细填写具体原因</span>
                 </div>
             </div>
 
             <!-- Button (Double) -->
             <div class="form-group">
-                <label class="col-md-4 control-label" >选择</label>
+                <label class="col-md-4 control-label">选择</label>
                 <div class="col-md-8">
                     <button type="submit" class="btn btn-info">确定</button>
-                    <button  type="reset" class="btn btn-warning">重填</button>
+                    <button type="reset" class="btn btn-warning">重填</button>
                 </div>
             </div>
 
@@ -52,3 +54,4 @@
     </form>
 
 </div>
+

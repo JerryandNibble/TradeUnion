@@ -14,7 +14,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public IList<TiJian> Query_TiJian()
         {
-            const string Query_factorySql = @"select xingming,
+            const string Query_factorySql = @"select
+                                            xingming,
                                             shijian,
                                             yiyuan,
                                             jieguo 
@@ -30,7 +31,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public TiJian QueryTiJian(int Id)
         {
-            const string Query_TiJiansql = @"select bianhao,
+            const string Query_TiJiansql = @"select id,
+                                            bianhao,
                                             xingming,
                                             shijian,
                                             yiyuan,
@@ -66,7 +68,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public Shengri QueryShengRi(int Id)
         {
-            const string Query_ShengRisql = @"select bianhao,
+            const string Query_ShengRisql = @"select id,
+                                            bianhao,
                                             xingming,
                                             shengri 
                                             from tb_shengri
@@ -84,7 +87,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public IList<Baoxian> Query_BaoXian()
         {
-            const string Query_factorySql = @"select xingming,
+            const string Query_factorySql = @"select
+                                            xingming,
                                             youxiaoqi,
                                             baoxian,
                                             fenshu 
@@ -100,7 +104,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public Baoxian QueryBaoXian(int Id)
         {
-            const string Query_BaoXiansql = @"select bianhao,
+            const string Query_BaoXiansql = @"select id,
+                                            bianhao,
                                             xingming,
                                             youxiaoqi,
                                             baoxian,
@@ -118,7 +123,7 @@ namespace SQLSeverDal.EmployeeBenefits
         /// 特殊情况
         /// </summary>
         /// <returns></returns>
-        public IList<Teshu> Query_TeShu()
+        public IList<FTeshu> Query_TeShu()
         {
             const string Query_factorySql = @"select id,
                                             bianhao,
@@ -126,22 +131,23 @@ namespace SQLSeverDal.EmployeeBenefits
                                             teshu
                                             from tb_teshu
                                            ";
-            return Query<Teshu>(Query_factorySql).ToList();
+            return Query<FTeshu>(Query_factorySql).ToList();
         }
         /// <summary>
         /// 遍历特殊情况返回至编辑视图
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public Teshu QueryTeShu(int Id)
+        public FTeShu QueryTeShu(int Id)
         {
-            const string Query_TeShusql = @"select bianhao,
+            const string Query_FTeShusql = @"select id,
+                                            bianhao,
                                             xingming,
                                             teshu 
                                             from tb_teshu
                                             where ID = @Id
                                            ";
-            var Model = base.QueryFirst<Teshu>(Query_TeShusql, new { Id = Id });
+            var Model = base.QueryFirst<FTeShu>(Query_FTeShusql, new { Id = Id });
             return Model;
         }
         #endregion

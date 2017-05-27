@@ -247,7 +247,7 @@ namespace TradeUnion.Controllers
             return View(ViewData.Model);
         }
 
-        public ActionResult EditBaoXianSave(JiaGou model)
+        public ActionResult EditInsuranceSave(JiaGou model)
         {
             const string EditBaoXianSaveSql = @"UPDATE dbo.TB_BaoXian
 				                                   SET	BianHao=@BianHao,
@@ -278,7 +278,7 @@ namespace TradeUnion.Controllers
             return View();
         }
 
-        public ActionResult AddSpe(Teshu model)
+        public ActionResult AddSpe(FTeshu model)
         {
             SQLHelper sqlh = new SQLHelper();
             const string AddSpesql = @"INSERT INTO dbo.TB_TeShu
