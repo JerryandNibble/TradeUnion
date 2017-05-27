@@ -201,13 +201,6 @@ namespace TradeUnion.Controllers
         }
 
         /// <summary>
-        /// 修改工会法规信息的方法
-        /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
-
-
-        /// <summary>
         /// 返回工会法规信息到视图的方法(Controller到View)
         /// </summary>
         /// <param name="model"></param>
@@ -235,6 +228,7 @@ namespace TradeUnion.Controllers
             {
                 var result = conn.Execute(EditUnionPolicySaveSql, model) > 0;
             }
+
             return RedirectToAction("ScanUnionPolicyIndex", "UnionInfor");
         }
         #endregion

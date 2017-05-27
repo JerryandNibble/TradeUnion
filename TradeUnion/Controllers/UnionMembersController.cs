@@ -1,12 +1,20 @@
-﻿using SQLSeverDal.UnionMembers;
+﻿using Dapper;
+using SQLServerDal;
+using SQLSeverDal.UnionMembers;
+using System;
+using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
+
+
 
 namespace TradeUnion.Controllers
 {
     public class UnionMembersController : Controller
     {
+        #region  返回教职工成员主页视图
         /// <summary>
         /// 返回工会成员管理视图
         /// </summary>
@@ -16,8 +24,12 @@ namespace TradeUnion.Controllers
         {
             return View();
         }
+
+        #endregion
+
+        #region  工会教职工成员方法
         /// <summary>
-        /// 
+        /// 返回添加工会教职工视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddUnionMembersIndex()
@@ -25,7 +37,7 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 
+        /// 返回工会教职工信息视图
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionMembersIndex()
@@ -36,7 +48,7 @@ namespace TradeUnion.Controllers
             return View();
         }
         /// <summary>
-        /// 添加工会成员信息
+        /// 返回添加工会职工视图
         /// </summary>
         /// <returns></returns>
         public ActionResult AddMbs(KeHu model)
@@ -70,12 +82,54 @@ namespace TradeUnion.Controllers
         }
 
         /// <summary>
-        /// 返回删除工会成员信息DelUnionArchiIndex视图
+        /// 删除工会成员信息
         /// </summary>
         /// <returns></returns>
-        public ActionResult DelUnionMemberIndex()
+        public ActionResult DelMbsMSG(int Id = 0)
         {
-            return View();
+            const string DeleteMbssql = @"
+                        DELETE FROM dbo.tb_kehu
+                        WHERE ID = @ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DeleteMbssql, dp) > 0;
+            }
+            return RedirectToAction("ScanUnionMembersIndex", "UnionMembers");
         }
+
+        /// <summary>
+        /// 从控制器返回数据到视图
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult EditUnionMembersIndex(int Id = 0)
+        {
+            UnionMembersDal unioninforDal = new UnionMembersDal();
+            var queryResult = unioninforDal.QueryEmployee(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
+
+        public ActionResult EditMembersSave(KeHu model)
+        {
+            const string EditUnionPolicySaveSql = @"UPDATE dbo.TB_KeHu
+				                                    SET	BianHao=@BianHao,
+					                                    PassWord=@PassWord,
+					                                    XingMing=@XingMing,
+                                                        IDCard=@IDCard,
+                                                        ShengRi=@ShengRi,
+                                                        Address=@Address,
+                                                        LianXIFangShi=@LianXIFangShi,
+                                                        LeiXing=@LeiXing
+				                                    WHERE ID=@ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                var result = conn.Execute(EditUnionPolicySaveSql, model) > 0;
+            }
+            return RedirectToAction("ScanUnionMembersIndex", "UnionMembers");
+        }
+        #endregion
     }
 }

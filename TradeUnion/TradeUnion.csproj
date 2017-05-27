@@ -440,6 +440,7 @@
     <Content Include="Views\EmployeeBenefits\ScanActivityIndex.cshtml" />
     <Content Include="Views\UnionInfor\EditUnionAnnounIndex.cshtml" />
     <Content Include="Views\UnionInfor\EditUnionPolicyIndex.cshtml" />
+    <Content Include="Views\UnionMembers\EditUnionMembersIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
