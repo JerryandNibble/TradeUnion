@@ -19,7 +19,6 @@ namespace TradeUnion.Controllers
 
 
 
-
         #region 体检信息方法
         /// <summary>
         /// 浏览体检信息的方法

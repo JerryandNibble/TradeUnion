@@ -1,17 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "AddBirthdayIndex";
+    ViewBag.Title = "EditShengRiIndex";
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
 
-<div class="col-md-11 well admin-content" >
-   
+@model TU.Model.Models.Shengri
 
-    <form class="form-horizontal" action="/EmployeeBenefits/AddBriDay" method="post">
+<div class="col-md-11 well admin-content">
+
+    <form class="form-horizontal" action="/EmployeeBenefits/EditShengRiSave" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend class="text-center">添加教职工生日信息</legend>
+            <legend class="text-center">编辑教职工生日信息</legend>
 
             <!-- Text input-->
             <div class="form-group">
@@ -19,7 +20,7 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <span class="input-group-addon">Num</span>
-                        <input name="BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
+                        <input name="BianHao" value="@Model.BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
                     </div>
                 </div>
             </div>
@@ -28,15 +29,15 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">姓名</label>
                 <div class="col-md-4">
-                    <input name="XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
+                    <input name="XingMing" value="@Model.XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
                 </div>
             </div>
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" >生日</label>
+                <label class="col-md-4 control-label">生日</label>
                 <div class="col-md-4">
-                    <input name="ShengRi" type="text" placeholder="填写教职工生日" class="form-control input-md" required>
+                    <input name="ShengRi" value="@Model.ShengRi" type="text" placeholder="填写教职工生日" class="form-control input-md" required>
                     <span class="help-block">格式为:YYYY-MM-DD</span>
                 </div>
             </div>
@@ -51,7 +52,8 @@
                 </div>
             </div>
 
-</fieldset>
+        </fieldset>
     </form>
 
 </div>
+

@@ -442,6 +442,7 @@
     <Content Include="Views\UnionInfor\EditUnionPolicyIndex.cshtml" />
     <Content Include="Views\UnionMembers\EditUnionMembersIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditBodyExamIndex.cshtml" />
+    <Content Include="Views\EmployeeBenefits\EditShengRiIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
