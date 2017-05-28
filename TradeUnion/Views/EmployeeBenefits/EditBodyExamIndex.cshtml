@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "AddBodyExamIndex";
+    ViewBag.Title = "EditBodyExamIndex";
     Layout = "~/Views/Shared/_UnionLeft.cshtml";
 }
+
+@model TU.Model.Models.TiJian
 
 <div class="col-md-11 well admin-content">
 
@@ -18,7 +20,7 @@
                 <div class="col-md-6">
                     <div class="input-group">
                         <span class="input-group-addon">Num</span>
-                        <input name="BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
+                        <input name="BianHao" value="@Model.BianHao" type="text" placeholder="输入教职工编号" class="form-control input-md">
                     </div>
                 </div>
             </div>
@@ -27,7 +29,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">姓名</label>
                 <div class="col-md-4">
-                    <input name="XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
+                    <input name="XingMing" value="@Model.XingMing" type="text" placeholder="输入教职工姓名" class="form-control input-md">
                     <span class="help-block">请您如实填写</span>
                 </div>
             </div>
@@ -36,7 +38,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">时间</label>
                 <div class="col-md-4">
-                    <input name="ShiJian" type="text" placeholder="填写体检时间" class="form-control input-md" required>
+                    <input name="ShiJian" value="@Model.ShiJian" type="text" placeholder="填写体检时间" class="form-control input-md" required>
                     <span class="help-block">格式:YYYY-MM-DD</span>
                 </div>
             </div>
@@ -60,7 +62,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label">体检结果</label>
                 <div class="col-md-8">
-                    <textarea class="form-control" name="JieGuo"></textarea>
+                    <textarea class="form-control" name="JieGuo">@Model.JieGuo</textarea>
                 </div>
             </div>
 

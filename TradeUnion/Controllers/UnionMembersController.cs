@@ -106,8 +106,8 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult EditUnionMembersIndex(int Id = 0)
         {
-            UnionMembersDal unioninforDal = new UnionMembersDal();
-            var queryResult = unioninforDal.QueryEmployee(Id);
+            UnionMembersDal unionmemberDal = new UnionMembersDal();
+            var queryResult = unionmemberDal.QueryEmployee(Id);
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }

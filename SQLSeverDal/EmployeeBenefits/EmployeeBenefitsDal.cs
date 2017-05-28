@@ -14,7 +14,7 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public IList<TiJian> Query_TiJian()
         {
-            const string Query_factorySql = @"select
+            const string Query_factorySql = @"select id,
                                             xingming,
                                             shijian,
                                             yiyuan,
@@ -31,13 +31,13 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public TiJian QueryTiJian(int Id)
         {
-            const string Query_TiJiansql = @"select id,
+            const string Query_TiJiansql = @"select
                                             bianhao,
                                             xingming,
                                             shijian,
                                             yiyuan,
                                             jieguo 
-                                            from tb_tijian
+                                            from tb_TiJian
                                             where ID = @Id
                                            ";
             var Model = base.QueryFirst<TiJian>(Query_TiJiansql, new { Id = Id });
@@ -68,13 +68,11 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public Shengri QueryShengRi(int Id)
         {
-            const string Query_ShengRisql = @"select id,
-                                            bianhao,
-                                            xingming,
-                                            shengri 
-                                            from tb_shengri
-                                            where ID = @Id
-                                           ";
+            const string Query_ShengRisql = @"select bianhao,
+                                                     xingming,
+                                                     shengri 
+                                              from tb_shengri
+                                              where ID = @Id";
             var Model = base.QueryFirst<Shengri>(Query_ShengRisql, new { Id = Id });
             return Model;
         }
@@ -143,7 +141,7 @@ namespace SQLSeverDal.EmployeeBenefits
             const string Query_FTeShusql = @"select id,
                                             bianhao,
                                             xingming,
-                                            teshu 
+                                            teshu
                                             from tb_teshu
                                             where ID = @Id
                                            ";

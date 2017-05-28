@@ -2,7 +2,6 @@
 using SQLServerDal;
 using SQLSeverDal.UnionInfor;
 using System;
-using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
@@ -87,7 +86,7 @@ namespace TradeUnion.Controllers
         /// <returns></returns>
         public ActionResult DelUnionArchiIndex(int Id = 0)
         {
-            const string DelectedJIAGOUsql = @"
+            const string DelJiaGousql = @"
                         DELETE FROM dbo.tb_jiagou
                         WHERE ID = @ID
 
@@ -96,7 +95,7 @@ namespace TradeUnion.Controllers
             {
                 DynamicParameters dp = new DynamicParameters();
                 dp.Add("ID", Id);
-                var result = conn.Execute(DelectedJIAGOUsql, dp) > 0;
+                var result = conn.Execute(DelJiaGousql, dp) > 0;
             }
             return RedirectToAction("ScanUnionArchiIndex", "UnionInfor");
         }

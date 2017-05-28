@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SQLServerDal;
 using SQLSeverDal.EmployeeBenefits;
+using System;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
@@ -172,7 +173,7 @@ namespace TradeUnion.Controllers
             return View(ViewData.Model);
         }
 
-        public ActionResult EditShengRiSave(JiaGou model)
+        public ActionResult EditShengRiSave(Shengri model)
         {
             const string EditShengRiSaveSql = @"UPDATE dbo.TB_ShengRi
 				                                   SET	BianHao=@BianHao,
@@ -242,17 +243,17 @@ namespace TradeUnion.Controllers
         public ActionResult EditInsuranceIndex(int Id = 0)
         {//EditBaoXianIndex对应一个同名页面，这样通过传值，将内容传递到对应页面的文本框中
             EmployeeBenefitsDal BaoXianInforDal = new EmployeeBenefitsDal();
-            var queryResult = BaoXianInforDal.QueryShengRi(Id);
+            var queryResult = BaoXianInforDal.QueryBaoXian(Id);
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }
 
-        public ActionResult EditInsuranceSave(JiaGou model)
+        public ActionResult EditInsuranceSave(Baoxian model)
         {
             const string EditBaoXianSaveSql = @"UPDATE dbo.TB_BaoXian
 				                                   SET	BianHao=@BianHao,
 					                                    XingMing=@XingMing,
-					                                    ShengRi=@YouXiaoQi,
+					                                    YouXiaoQi=@YouXiaoQi,
                                                         BaoXian=@BaoXian,
                                                         FenSHu=@FenSHu
 				                                   WHERE ID=@ID";
@@ -315,13 +316,13 @@ namespace TradeUnion.Controllers
 
         public ActionResult EditFTeSHuIndex(int Id = 0)
         {
-            EmployeeBenefitsDal FTeShuInforDal = new EmployeeBenefitsDal();
-            var queryResult = FTeShuInforDal.QueryTeShu(Id);
+            EmployeeBenefitsDal TeShuInforDal = new EmployeeBenefitsDal();
+            var queryResult = TeShuInforDal.QueryTeShu(Id);
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }
 
-        public ActionResult EditFTeSHuInforSave(JiaGou model)
+        public ActionResult EditFTeSHuInforSave(FTeshu model)
         {
             const string EditFTeSHuSaveSql = @"UPDATE dbo.TB_FTeShu
 				                                   SET	BianHao=@BianHao,

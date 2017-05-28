@@ -1,4 +1,7 @@
-﻿using SQLSeverDal.EmployeeFamily;
+﻿using Dapper;
+using SQLServerDal;
+using SQLSeverDal.EmployeeFamily;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Web.Mvc;
 using TU.Model.Models;
@@ -7,35 +10,15 @@ namespace TradeUnion.Controllers
 {
     public class EmployeeFamilyController : Controller
     {
-        /// <summary>
-        /// 返回教职工家属信息视图
-        /// </summary>
-        /// <returns></returns>
-        // GET: EmployeeFamily
+        #region 子女信息主页
         public ActionResult EmployeeFamilyIndex()
         {
             return View();
         }
-        /// <summary>
-        /// 返回添加子女信息视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult AddChildIndex()
-        {
-            return View();
-        }
-        /// <summary>
-        /// 返回添加子女特殊情况视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult AddChildStatusIndex()
-        {
-            return View();
-        }
-        /// <summary>
-        /// 返回浏览子女信息视图
-        /// </summary>
-        /// <returns></returns>
+        #endregion
+
+
+        #region 子女信息方法
         public ActionResult ScanChildIndex()
         {
             EmployeeFamilyDal ScanEmployeeFamily = new EmployeeFamilyDal();
@@ -43,24 +26,12 @@ namespace TradeUnion.Controllers
             ViewBag.List = queryResult;
             return View();
         }
-        /// <summary>
-        /// 返回浏览子女特殊情况视图
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult ScanChildStatusIndex()
+
+        public ActionResult AddChildIndex()
         {
-            EmployeeFamilyDal ScanEmployeeFamilyTeShu = new EmployeeFamilyDal();
-            var queryResult = ScanEmployeeFamilyTeShu.Query_FTeShu();
-            ViewBag.List = queryResult;
             return View();
         }
-        
 
-        /// <summary>
-        /// 添加子女信息的方法
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
         public ActionResult AddCil(ZiNV model)
         {
             SQLHelper sqlh = new SQLHelper();
@@ -88,6 +59,79 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanChildIndex", "EmployeeFamily");
         }
 
+        public ActionResult DelChild(int Id = 0)
+        {
+            const string DelZiNvsql = @"
+                        DELETE FROM dbo.tb_zinv
+                        WHERE ID = @ID
+
+            ";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("ID", Id);
+                var result = conn.Execute(DelZiNvsql, dp) > 0;
+            }
+            return RedirectToAction("ScanChildIndex", "EmployeeFamily");
+        }
+
+        public ActionResult EditChildIndex(int Id = 0)
+        {
+            EmployeeFamilyDal childinforDal = new EmployeeFamilyDal();
+            var queryResult = childinforDal.QueryChild(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
+
+        public ActionResult EditChildSave(ZiNV model)
+        {
+            const string EditChildSaveSql = @"UPDATE dbo.TB_ZiNV
+				                                   SET	BianHao=@BianHao,
+                                                        XingMing=@XingMing,
+					                                    GuanXi=@GuanXi,
+                                                        XingMing2=@XingMing2,
+                                                        Age=@Age,
+					                                    XueLi=@XueLi,
+                                                        XueXiao=@XueXiao
+				                                   WHERE ID=@ID";
+            using (DbConnection conn = DbFactory.CreateConnection())
+            {
+                var result = conn.Execute(EditChildSaveSql, model) > 0;
+            }
+            return RedirectToAction("ScanChildIndex", "EmployeeFamily");
+        }
+        #endregion
+
+
+
+
+
+
+
+
+        
+        /// <summary>
+        /// 返回添加子女特殊情况视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddChildStatusIndex()
+        {
+            return View();
+        }
+
+        
+        /// <summary>
+        /// 返回浏览子女特殊情况视图
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ScanChildStatusIndex()
+        {
+            EmployeeFamilyDal ScanEmployeeFamilyTeShu = new EmployeeFamilyDal();
+            var queryResult = ScanEmployeeFamilyTeShu.Query_FTeShu();
+            ViewBag.List = queryResult;
+            return View();
+        }
+        
 
         /// <summary>
         /// 添加子女特殊情况
