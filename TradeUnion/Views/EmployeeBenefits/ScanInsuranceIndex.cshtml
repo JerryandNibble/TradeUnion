@@ -12,6 +12,7 @@
                 <table class="table table-striped custab">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>姓名</th>
                             <th>保险</th>
                             <th>有效期</th>
@@ -23,6 +24,7 @@
                         foreach (var item in ViewBag.List)
                         {
                             <tr>
+                                <td>@item.ID</td>
                                 <td>@item.XingMing</td>
                                 <td>@item.BaoXian</td>
                                 <td>@item.YouXiaoQi</td>

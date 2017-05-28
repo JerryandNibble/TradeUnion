@@ -86,7 +86,7 @@ namespace TradeUnion.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ActionResult EditBodyExamInforIndex(int Id = 0)
+        public ActionResult EditBodyExamIndex(int Id = 0)
         {   //对应工会教职工信息的数据访问层的类，
             //其对象通过调用QueryTiJian方法实现Model内数据取出操作并最终通过ViewData方式显示到View视图
             EmployeeBenefitsDal bodyexaminforDal = new EmployeeBenefitsDal();
@@ -314,7 +314,7 @@ namespace TradeUnion.Controllers
             return RedirectToAction("ScanSpecialIndex", "EmployeeBenefits");
         }
 
-        public ActionResult EditFTeSHuIndex(int Id = 0)
+        public ActionResult EditTeShuIndex(int Id = 0)
         {
             EmployeeBenefitsDal TeShuInforDal = new EmployeeBenefitsDal();
             var queryResult = TeShuInforDal.QueryTeShu(Id);

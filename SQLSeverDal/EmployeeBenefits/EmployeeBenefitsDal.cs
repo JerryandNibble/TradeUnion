@@ -85,13 +85,12 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public IList<Baoxian> Query_BaoXian()
         {
-            const string Query_factorySql = @"select
-                                            xingming,
-                                            youxiaoqi,
-                                            baoxian,
-                                            fenshu 
-                                            from tb_baoxian
-                                           ";
+            const string Query_factorySql = @"select id,
+                                                     xingming,
+                                                     youxiaoqi,
+                                                     baoxian,
+                                                     fenshu 
+                                              from tb_baoxian";
             return Query<Baoxian>(Query_factorySql).ToList();
         }
 
