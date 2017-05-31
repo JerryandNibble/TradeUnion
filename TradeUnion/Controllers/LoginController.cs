@@ -21,6 +21,8 @@ namespace TradeUnion.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        
+        [HttpPost]
         public ActionResult LoginAction(Login model)
         {
             string name = model.UserName;  //name 为 视图中获取的 输入框中  name为UserName 值
@@ -37,8 +39,28 @@ namespace TradeUnion.Controllers
             }
             else
             {
-               return Redirect("LoginIndex");//重定向到本控制器中的LoginIndex方法
+                return Redirect("LoginIndex");//重定向到本控制器中的LoginIndex方法
             }
+
+
+
+            //BendadmindBll _bendadmindBll = new BendadmindBll();
+            //var queryResult = _bendadmindBll.Scan_Bendadmind();
+            //ViewBag.List = queryResult;
+            //string checktrue = "true";
+            //if (user.Checknumber == checktrue)
+            //{
+            //    foreach (var usermodel in queryResult)
+            //    {
+            //        if (usermodel.AdAccount == user.UserAccount && usermodel.AdPassWord == user.UserPassword)
+            //        {
+            //            ViewData.Model = usermodel;
+            //            Session["UserAccount"] = usermodel;//将值存在一个
+            //            return RedirectToAction("UnionFunctionIndex", "UnionFunctionController");
+            //        }
+            //    }
+            //}
+            //return RedirectToAction("UserLoginIndex", "LoginSignUp");
         }
     }
 }
