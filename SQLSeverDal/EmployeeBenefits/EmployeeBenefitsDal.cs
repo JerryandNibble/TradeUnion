@@ -31,7 +31,7 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public TiJian QueryTiJian(int Id)
         {
-            const string Query_TiJiansql = @"select
+            const string Query_TiJiansql = @"select id,
                                             bianhao,
                                             xingming,
                                             shijian,
@@ -68,7 +68,8 @@ namespace SQLSeverDal.EmployeeBenefits
         /// <returns></returns>
         public Shengri QueryShengRi(int Id)
         {
-            const string Query_ShengRisql = @"select bianhao,
+            const string Query_ShengRisql = @"select id,
+                                                     bianhao,
                                                      xingming,
                                                      shengri 
                                               from tb_shengri

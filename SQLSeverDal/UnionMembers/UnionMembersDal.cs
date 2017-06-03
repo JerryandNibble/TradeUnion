@@ -21,7 +21,9 @@ namespace SQLSeverDal.UnionMembers
         #region 对教职工成员进行遍历操作的Dal语句
         public KeHu QueryEmployee(int Id)
         {
-            const string Query_Employeesql = @"select bianhao,
+            const string Query_Employeesql = @"select 
+                                                      ID,
+                                                      bianhao,
                                                       PassWord,
                                                       xingming,
                                                       shengri,

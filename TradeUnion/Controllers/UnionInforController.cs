@@ -30,7 +30,7 @@ namespace TradeUnion.Controllers
         #region 架构信息方法
 
         /// <summary>
-        /// 浏览工会架构全部信息
+        /// 浏览工会架构信息
         /// </summary>
         /// <returns></returns>
         public ActionResult ScanUnionArchiIndex()
@@ -111,6 +111,13 @@ namespace TradeUnion.Controllers
             return View(ViewData.Model);
         }
 
+        public ActionResult FullArchiContents(int Id = 0)
+        {
+            UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryJiaGou(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
+        }
         public ActionResult EditUnionArchiSave(JiaGou model)
         {
             const string EditUnionArchiSaveSql = @"UPDATE dbo.TB_JiaGou
@@ -141,6 +148,14 @@ namespace TradeUnion.Controllers
             var queryResult = ScanUnion.Query_FaGui();
             ViewBag.List = queryResult;
             return View();
+        }
+
+        public ActionResult FullPolicyContents(int Id = 0)
+        {
+            UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryFaGui(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
         }
 
         /// <summary>
@@ -244,6 +259,14 @@ namespace TradeUnion.Controllers
             var queryResult = ScanUnion.Query_GongGao();
             ViewBag.List = queryResult;
             return View();
+        }
+
+        public ActionResult FullAnnounContents(int Id = 0)
+        {
+            UnionInforDal unioninforDal = new UnionInforDal();
+            var queryResult = unioninforDal.QueryGongGao(Id);
+            ViewData.Model = queryResult;
+            return View(ViewData.Model);
         }
 
         /// <summary>

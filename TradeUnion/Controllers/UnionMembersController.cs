@@ -108,25 +108,26 @@ namespace TradeUnion.Controllers
         {
             UnionMembersDal unionmemberDal = new UnionMembersDal();
             var queryResult = unionmemberDal.QueryEmployee(Id);
+            //queryResult.ID = Id;
             ViewData.Model = queryResult;
             return View(ViewData.Model);
         }
 
         public ActionResult EditMembersSave(KeHu model)
         {
-            const string EditUnionPolicySaveSql = @"UPDATE dbo.TB_KeHu
+            const string EditMembersSaveSql = @"UPDATE dbo.TB_KeHu
 				                                    SET	BianHao=@BianHao,
 					                                    PassWord=@PassWord,
 					                                    XingMing=@XingMing,
-                                                        IDCard=@IDCard,
                                                         ShengRi=@ShengRi,
                                                         Address=@Address,
+                                                        IDCard=@IDCard,
                                                         LianXIFangShi=@LianXIFangShi,
                                                         LeiXing=@LeiXing
 				                                    WHERE ID=@ID";
             using (DbConnection conn = DbFactory.CreateConnection())
             {
-                var result = conn.Execute(EditUnionPolicySaveSql, model) > 0;
+                var result = conn.Execute(EditMembersSaveSql, model) > 0;
             }
             return RedirectToAction("ScanUnionMembersIndex", "UnionMembers");
         }

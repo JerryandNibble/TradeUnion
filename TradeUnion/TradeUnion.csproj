@@ -367,6 +367,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\carousel extended.js" />
     <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\ClickModal.js" />
     <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -446,6 +447,9 @@
     <Content Include="Views\EmployeeBenefits\EditInsuranceIndex.cshtml" />
     <Content Include="Views\EmployeeBenefits\EditTeShuIndex.cshtml" />
     <Content Include="Views\EmployeeFamily\EditChildInfor.cshtml" />
+    <Content Include="Views\UnionInfor\FullArchiContents.cshtml" />
+    <Content Include="Views\UnionInfor\FullPolicyContents.cshtml" />
+    <Content Include="Views\UnionInfor\FullAnnounContents.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

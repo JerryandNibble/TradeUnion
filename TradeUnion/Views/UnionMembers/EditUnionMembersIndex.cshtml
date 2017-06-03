@@ -12,13 +12,18 @@
 
             <!-- Form Name -->
             <legend class="text-center">编辑工会职工信息</legend>
-
             <!-- Prepended text-->
+
+            <div style="display:none">
+                <input type="text" name="ID" value="@Model.ID" />
+            </div>
+
             <div class="form-group">
                 <label class="col-md-4 control-label">编号</label>
                 <div class="col-md-6">
                     <div class="input-group">
                         <span class="input-group-addon">Num</span>
+
                         <input name="BianHao" value="@Model.BianHao" class="form-control" placeholder="填写编号" type="text" required>
                     </div>
 
